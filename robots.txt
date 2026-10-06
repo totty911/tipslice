@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://totty911.github.io/tipslice/sitemap.xml
+Sitemap: https://tipslice.com/sitemap.xml
