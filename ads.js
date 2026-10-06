@@ -1,10 +1,8 @@
 /* TipSlice — AdSense config + year stamp. Loaded on every page.
- * Leave ADSENSE_CLIENT_ID empty until Google AdSense approves the site.
- * Paste YOUR publisher ID, e.g. 'ca-pub-1234567890123456' (do not invent one).
- * With only the client ID set, Auto Ads load. Optionally add ad-unit slot IDs
- * from AdSense (Ads > By ad unit) to fill the reserved zones as well.
+ * Publisher ID is set (Matt / Joe verified). Auto Ads load with the client ID alone.
+ * Optionally add ad-unit slot IDs from AdSense (Ads > By ad unit) to fill the reserved zones.
  */
-const ADSENSE_CLIENT_ID = '';
+const ADSENSE_CLIENT_ID = 'ca-pub-5833914188606567';
 const ADSENSE_SLOTS = {
   leaderboard: '', // display ad unit under the header (e.g. '1234567890')
   rectangle: ''    // display ad unit below the results
