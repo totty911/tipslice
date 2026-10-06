@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Tax Calculator – Add Tax or Back Out Pre-Tax Price | TipSlice</title>
+  <meta name="description" content="Free sales tax calculator: add tax to a price or reverse a tax-inclusive total to find the pre-tax amount. Instant, private, runs in your browser.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://totty911.github.io/tipslice/sales-tax-calculator.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://totty911.github.io/tipslice/sales-tax-calculator.html">
+  <meta property="og:title" content="Sales Tax Calculator | TipSlice">
+  <meta property="og:description" content="Add sales tax to a price or reverse out the pre-tax amount from a total.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Sales Tax Calculator","url":"https://totty911.github.io/tipslice/sales-tax-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#amount">Skip to calculator</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="ad-slot ad-leaderboard" data-ad-zone="leaderboard" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+  </div>
+
+  <main class="wrap" id="main">
+    <h1>Sales Tax Calculator</h1>
+    <p class="lede">Add tax to a pre-tax price, or reverse a tax-inclusive total to see what the item cost before tax.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Sales tax tool</h2>
+      <form id="tax-form" class="card" novalidate autocomplete="off">
+        <fieldset class="field">
+          <legend>Calculation mode</legend>
+          <div class="mode-tabs" role="radiogroup">
+            <label class="chip"><input type="radio" name="mode" id="mode-pre" value="pre" checked><span>Add tax</span></label>
+            <label class="chip"><input type="radio" name="mode" id="mode-post" value="post"><span>Remove tax</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="amount" id="label-amount">Price before tax</label>
+          <div class="input-affix">
+            <span class="affix" aria-hidden="true">$</span>
+            <input id="amount" name="amount" type="text" inputmode="decimal" placeholder="0.00">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rate">Sales tax rate</label>
+          <div class="input-affix affix-right">
+            <input id="rate" name="rate" type="text" inputmode="decimal" placeholder="e.g. 8.25" aria-describedby="rate-hint">
+            <span class="affix" aria-hidden="true">%</span>
+          </div>
+          <p id="rate-hint" class="hint">Combined state and local rate as a percent, not a decimal.</p>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Calculate</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="card results" id="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Tax breakdown</h2>
+        <div aria-live="polite" aria-atomic="true">
+          <div class="per-person">
+            <div class="big-stat">
+              <span class="stat-label">Total with tax</span>
+              <output id="out-total" class="stat-value">$0.00</output>
+            </div>
+            <div class="big-stat secondary">
+              <span class="stat-label">Tax amount</span>
+              <output id="out-tax" class="stat-value">$0.00</output>
+            </div>
+          </div>
+          <dl class="breakdown">
+            <div><dt>Pre-tax price</dt><dd id="out-pre">$0.00</dd></div>
+          </dl>
+          <p class="hint" id="out-note"></p>
+        </div>
+      </section>
+    </section>
+
+    <aside class="ad-slot ad-rectangle" data-ad-zone="rectangle" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+
+    <article class="content">
+      <h2>Sales tax without the spreadsheet</h2>
+      <p>Menu prices, online carts, and handwritten quotes often show the amount before tax. At the register the total jumps. This calculator answers two everyday questions: “What will I pay after tax?” and “If this receipt shows one number, what was the price before tax?” Both modes use the rate you supply—TipSlice does not fetch live jurisdiction rates—so you stay in control of the percentage.</p>
+      <p>Pairing tax math with tipping matters because many people tip on the pre-tax subtotal. Knowing the clean pre-tax figure helps you avoid tipping on tax by accident, or deliberately include it if that is your preference. After you know the tax line, jump to the <a href="/">tip calculator</a> or <a href="/split-bill.html">bill splitter</a> to finish the check.</p>
+
+      <h2>How to use the two modes</h2>
+      <h3>Add tax</h3>
+      <p>Choose <strong>Add tax</strong>, enter the pre-tax price, and type your combined sales tax rate as a percent (for example 8.25, not 0.0825). The tool shows the tax dollars and the total you should expect to pay. Amounts round to the nearest cent.</p>
+      <h3>Remove tax</h3>
+      <p>Choose <strong>Remove tax</strong> when you only have a tax-inclusive total—common on some receipts, vacation packages, or “tax included” stickers. Enter that total and the same rate. TipSlice backs out an estimated pre-tax price and the implied tax. Minor cent differences can appear versus a merchant’s register because of rounding order; treat the result as a close estimate.</p>
+
+      <h2>Finding your rate</h2>
+      <p>Sales tax in the United States is usually a mix of state and local rates. The number on a grocery receipt or restaurant check is a good reference for that merchant. City tourism sites and state revenue departments publish schedules, but rates can change and special district taxes may apply. TipSlice never claims to know your exact rate; you enter it.</p>
+      <p>Some goods are exempt or taxed at a reduced rate (for example certain groceries or clothing thresholds). If only part of a cart is taxable, run the calculator on the taxable portion alone.</p>
+
+      <h2>Tax and tipping etiquette</h2>
+      <p>Traditional U.S. restaurant tipping uses the pre-tax food and drink total. If you tip on the after-tax amount, you are being slightly more generous. Neither approach is “wrong,” but groups should agree before splitting. Our tip tools default to pre-tax math and offer a checkbox when you want the other style—see the main calculator and the <a href="/tip-percentage.html">tip percentage guide</a>.</p>
+
+      <h2>Not tax advice</h2>
+      <p>This page is a convenience calculator for personal estimates. It is not a filing tool, not legal advice, and not a substitute for a point-of-sale system or accountant. Businesses collecting tax should use approved software and local guidance. Travelers should confirm whether listed hotel or tour prices already include VAT or occupancy tax.</p>
+
+      <h2>Privacy</h2>
+      <p>Prices and rates stay in your browser. TipSlice does not upload them. Details live in the <a href="/privacy.html">privacy policy</a>; usage limits are in the <a href="/terms.html">terms of use</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html" aria-current="page">Sales tax</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+
+  <script src="ads.js" defer></script>
+  <script src="sales-tax.js" defer></script>
+</body>
+</html>

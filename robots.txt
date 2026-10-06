@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://totty911.github.io/tipslice/sitemap.xml

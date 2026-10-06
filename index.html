@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tip Calculator – Split the Bill &amp; Tip Per Person | TipSlice</title>
+  <meta name="description" content="Free tip calculator: enter your bill, pick 10–25% or a custom tip, add tax, and split between any number of people. Instant results, runs entirely in your browser.">
+  <meta name="theme-color" content="#0f766e">
+  <!-- Update canonical/og:url when a custom domain is added -->
+  <link rel="canonical" href="https://totty911.github.io/tipslice/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://totty911.github.io/tipslice/">
+  <meta property="og:title" content="TipSlice – Free Tip Calculator">
+  <meta property="og:description" content="Work out the tip, tax, and each person's share in seconds. No sign-up, nothing uploaded.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css">
+  <!--
+    GOOGLE ADSENSE
+    Ads are switched on from ads.js by setting ADSENSE_CLIENT_ID (see README.md).
+    For AdSense site verification you may also uncomment the tag below and replace
+    ca-pub-XXXXXXXXXXXXXXXX with your real publisher ID. Never commit a made-up ID.
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TipSlice Tip Calculator",
+    "url": "https://totty911.github.io/tipslice/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#bill">Skip to calculator</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <!-- AD ZONE 1: leaderboard under header (empty until ADSENSE_CLIENT_ID is set) -->
+  <div class="wrap">
+    <aside class="ad-slot ad-leaderboard" data-ad-zone="leaderboard" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+  </div>
+
+  <main class="wrap" id="main">
+    <h1>Tip Calculator</h1>
+    <p class="lede">Enter the bill, choose a tip, and see exactly what each person owes. Results update as you type.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Calculator</h2>
+      <form id="tip-form" class="card" novalidate autocomplete="off">
+        <div class="field">
+          <label for="bill">Bill amount</label>
+          <div class="input-affix">
+            <span class="affix" aria-hidden="true">$</span>
+            <input id="bill" name="bill" type="text" inputmode="decimal" placeholder="0.00" aria-describedby="bill-hint">
+          </div>
+          <p id="bill-hint" class="hint">Food and drinks before tax, if you add tax below.</p>
+        </div>
+
+        <fieldset class="field">
+          <legend>Tip percentage</legend>
+          <div class="presets" role="radiogroup">
+            <label class="chip"><input type="radio" name="tip" value="10"><span>10%</span></label>
+            <label class="chip"><input type="radio" name="tip" value="15"><span>15%</span></label>
+            <label class="chip"><input type="radio" name="tip" value="18" checked><span>18%</span></label>
+            <label class="chip"><input type="radio" name="tip" value="20"><span>20%</span></label>
+            <label class="chip"><input type="radio" name="tip" value="25"><span>25%</span></label>
+            <label class="chip"><input type="radio" name="tip" value="custom" id="tip-custom-radio"><span>Custom</span></label>
+          </div>
+          <div class="custom-tip" id="custom-tip-wrap">
+            <label for="custom-tip">Custom tip</label>
+            <div class="input-affix affix-right">
+              <input id="custom-tip" name="customTip" type="text" inputmode="decimal" placeholder="e.g. 22">
+              <span class="affix" aria-hidden="true">%</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="people">Number of people</label>
+          <div class="stepper">
+            <button type="button" class="step" data-step="-1" aria-label="One fewer person">−</button>
+            <input id="people" name="people" type="text" inputmode="numeric" value="1" aria-describedby="people-hint">
+            <button type="button" class="step" data-step="1" aria-label="One more person">+</button>
+          </div>
+          <p id="people-hint" class="hint">Split evenly, 1–100 people.</p>
+        </div>
+
+        <div class="field">
+          <label class="switch">
+            <input type="checkbox" id="tax-toggle" aria-controls="tax-fields">
+            <span class="switch-track" aria-hidden="true"></span>
+            <span>Add sales tax</span>
+          </label>
+          <div id="tax-fields" class="tax-fields" hidden>
+            <label for="tax">Tax rate</label>
+            <div class="input-affix affix-right">
+              <input id="tax" name="tax" type="text" inputmode="decimal" placeholder="e.g. 8.25">
+              <span class="affix" aria-hidden="true">%</span>
+            </div>
+            <label class="check">
+              <input type="checkbox" id="tip-on-tax">
+              <span>Tip on the after-tax total</span>
+            </label>
+          </div>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Calculate</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="card results" id="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Your split</h2>
+        <div aria-live="polite" aria-atomic="true">
+          <div class="per-person">
+            <div class="big-stat">
+              <span class="stat-label">Total per person</span>
+              <output id="out-total-pp" class="stat-value">$0.00</output>
+            </div>
+            <div class="big-stat secondary">
+              <span class="stat-label">Tip per person</span>
+              <output id="out-tip-pp" class="stat-value">$0.00</output>
+            </div>
+          </div>
+          <dl class="breakdown">
+            <div><dt>Bill</dt><dd id="out-bill">$0.00</dd></div>
+            <div id="row-tax" hidden><dt>Tax</dt><dd id="out-tax">$0.00</dd></div>
+            <div><dt>Tip (<span id="out-tip-rate">18</span>%)</dt><dd id="out-tip">$0.00</dd></div>
+            <div class="grand"><dt>Total</dt><dd id="out-total">$0.00</dd></div>
+          </dl>
+          <p class="hint" id="out-note"></p>
+        </div>
+      </section>
+    </section>
+
+    <!-- AD ZONE 2: rectangle below results (empty until ADSENSE_CLIENT_ID is set) -->
+    <aside class="ad-slot ad-rectangle" data-ad-zone="rectangle" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+
+    <article class="content">
+      <h2>A fast, no-fuss way to work out the tip</h2>
+      <p>The check arrives, everyone reaches for a phone, and somebody tries to do 18% of $87.40 in their head. TipSlice exists to end that moment. Type the amount, tap a percentage, set how many people are paying, and you get the tip, the grand total, and each person's share at once. There is nothing to install and no account to create, so it works the same on a phone at the table as it does on a laptop at home.</p>
+      <p>The calculator handles the situations that make tipping awkward: splitting between a group, adding sales tax, and deciding whether to tip on the pre-tax or after-tax amount. Every number updates the instant you change something, so you can compare 15% with 20% without re-entering anything.</p>
+
+      <h2>How to use this tip calculator</h2>
+      <ol>
+        <li><strong>Enter the bill.</strong> Use the subtotal from your receipt. If your receipt already includes tax and you don't want to separate it, just enter the full amount and leave the tax switch off.</li>
+        <li><strong>Pick a tip.</strong> Tap one of the preset buttons from 10% to 25%, or choose Custom and type any rate, including decimals like 17.5.</li>
+        <li><strong>Set the party size.</strong> Use the plus and minus buttons or type a number. The per-person figures divide the tip and total evenly.</li>
+        <li><strong>Add tax if you want it.</strong> Switch on sales tax, enter your local rate, and decide whether the tip should be based on the amount before or after tax.</li>
+        <li><strong>Read your split.</strong> The large figure is what each person pays. The breakdown below shows the bill, tax, tip, and overall total. Press Reset to start over.</li>
+      </ol>
+      <p>Amounts are rounded to the nearest cent. When a total doesn't divide evenly, the per-person share is rounded up to the next cent so the group never comes up short, and a note shows how many cents the combined shares land over the real total.</p>
+
+      <h2>Tipping etiquette FAQ</h2>
+
+      <h3>How much should I tip at a sit-down restaurant?</h3>
+      <p>In the United States, 15% to 20% of the pre-tax bill is the common range for table service, with 18% to 20% increasingly treated as the standard for good service. Many people go to 25% for outstanding service, large or complicated orders, or when they stayed at the table a long time. Servers in many states earn a low base wage and rely on tips for most of their income, which is why the expectation is firmer here than in many other countries.</p>
+
+      <h3>Should I tip on the amount before or after tax?</h3>
+      <p>Traditionally, the tip is calculated on the subtotal before tax, because tax isn't part of the service you received. That said, the difference is usually small, and plenty of people simply tip on the final number for convenience. This calculator defaults to tipping on the pre-tax bill; tick "Tip on the after-tax total" if you prefer the other approach.</p>
+
+      <h3>What's the fairest way to split the tip in a group?</h3>
+      <p>An even split is the simplest and works well when everyone ordered roughly the same. If orders varied a lot, each person can enter their own portion of the bill and calculate their share separately. Before you split, check the receipt for an automatic gratuity: many restaurants add one for parties of six or more, and adding a second full tip on top is an easy mistake.</p>
+
+      <h3>Do I need to tip for takeout, coffee, or counter service?</h3>
+      <p>Tipping at a counter or for takeout is optional and varies widely. A small amount or 10% is a kind gesture when staff packed a large order or made something complicated, but it is not expected the way table-service tips are. Tablet screens that suggest 20% or more at checkout don't change the etiquette; choosing a lower amount or "no tip" for a simple purchase is perfectly reasonable.</p>
+
+      <h3>How much should I tip for food delivery?</h3>
+      <p>A common guideline is 15% to 20% of the order, with a few dollars as a minimum on small orders. Consider tipping more in bad weather, for long distances, or when a driver climbs several flights of stairs. On delivery apps, check whether the fee you're paying actually goes to the driver; service and delivery fees often don't.</p>
+
+      <h3>Should I tip on discounted or free items?</h3>
+      <p>Yes, it's good form to tip on what the meal would have cost without the coupon, gift card, or comped dish. The server did the same amount of work regardless of the discount, so base the tip on the original price.</p>
+
+      <h3>What if the service was poor?</h3>
+      <p>Lowering the tip is an option, but it helps to separate the server's performance from problems they can't control, such as a slow kitchen or a short-staffed shift. If something genuinely went wrong, a quiet word with a manager often does more good than leaving nothing.</p>
+
+      <h3>Is tipping expected in other countries?</h3>
+      <p>Customs differ a lot. In much of Europe, service is often included or wages are higher, so rounding up or leaving 5% to 10% is typical. In Japan and some other places, tipping can be unusual or even awkward. When traveling, check the menu or receipt for a service charge first and follow local practice.</p>
+
+      <h2>More TipSlice tools</h2>
+      <p>Need an even split with tip built in? Try the <a href="/split-bill.html">bill splitter</a>. Comparing rates? See the <a href="/tip-percentage.html">tip percentage guide</a>. Isolating tax? Use the <a href="/sales-tax-calculator.html">sales tax calculator</a>.</p>
+
+      <h2>Your privacy</h2>
+      <p id="privacy">All of the math runs right here in your browser. The amounts you type are never sent to a server, stored in a database, or shared with anyone. Close the page and they're gone. Full details: <a href="/privacy.html">privacy policy</a> and <a href="/terms.html">terms of use</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/" aria-current="page">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+
+  <script src="ads.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

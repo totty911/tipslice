@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tip Percentage Guide &amp; Calculator – Compare 10–25% | TipSlice</title>
+  <meta name="description" content="See what 10%, 15%, 18%, 20%, and 25% tip looks like on any bill. Free tip percentage calculator with etiquette context—runs in your browser.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://totty911.github.io/tipslice/tip-percentage.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://totty911.github.io/tipslice/tip-percentage.html">
+  <meta property="og:title" content="Tip Percentage Guide &amp; Calculator | TipSlice">
+  <meta property="og:description" content="Compare tip percentages side by side and learn common U.S. tipping ranges.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Tip Percentage Calculator","url":"https://totty911.github.io/tipslice/tip-percentage.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#bill">Skip to calculator</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="ad-slot ad-leaderboard" data-ad-zone="leaderboard" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+  </div>
+
+  <main class="wrap" id="main">
+    <h1>Tip Percentage Guide</h1>
+    <p class="lede">Enter a bill once and compare tip amounts at common rates—plus any custom percentage you choose.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Tip percentage calculator</h2>
+      <form id="pct-form" class="card" novalidate autocomplete="off">
+        <div class="field">
+          <label for="bill">Bill amount</label>
+          <div class="input-affix">
+            <span class="affix" aria-hidden="true">$</span>
+            <input id="bill" name="bill" type="text" inputmode="decimal" placeholder="0.00" aria-describedby="bill-hint">
+          </div>
+          <p id="bill-hint" class="hint">Usually the pre-tax subtotal for sit-down service.</p>
+        </div>
+
+        <div class="field">
+          <label for="custom-pct">Custom percentage (optional)</label>
+          <div class="input-affix affix-right">
+            <input id="custom-pct" name="customPct" type="text" inputmode="decimal" placeholder="e.g. 17.5">
+            <span class="affix" aria-hidden="true">%</span>
+          </div>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Update table</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="card results" id="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Tip at each rate</h2>
+        <div aria-live="polite" aria-atomic="true">
+          <table class="rate-table">
+            <thead>
+              <tr><th scope="col">Rate</th><th scope="col">Tip</th><th scope="col">Bill + tip</th></tr>
+            </thead>
+            <tbody id="pct-tbody"></tbody>
+          </table>
+          <p class="hint">Highlighted row marks your custom rate when it differs from the presets.</p>
+        </div>
+      </section>
+    </section>
+
+    <aside class="ad-slot ad-rectangle" data-ad-zone="rectangle" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+
+    <article class="content">
+      <h2>What tip percentage should you leave?</h2>
+      <p>Percentage tips scale with the bill, which is why they dominate sit-down dining in the United States. A flat few dollars might feel generous on coffee and stingy on a tasting menu. Comparing rates on the same check—exactly what this page does—helps you pick a number that matches the service and your budget without doing mental math under pressure.</p>
+      <p>Customs are not universal. The ranges below describe common U.S. expectations for full-service restaurants. Counter service, delivery apps, hotels, and travel abroad follow different norms. TipSlice explains patterns; it does not dictate what you must pay.</p>
+
+      <h2>Quick meaning of common tip rates</h2>
+      <h3>10%</h3>
+      <p>Often used for counter pickup, simple takeout, or as a floor when service was limited. For table service in the U.S., 10% is generally considered low unless something went seriously wrong or a large automatic gratuity is already on the check.</p>
+      <h3>15%</h3>
+      <p>Long treated as a baseline for acceptable table service. Many diners still use it, though surveys and restaurant guidance increasingly point higher for everyday good service.</p>
+      <h3>18%</h3>
+      <p>A practical modern default for solid service. It sits between the old 15% habit and the 20% “great night” tip, and it is a frequent automatic-gratuity rate for large parties.</p>
+      <h3>20%</h3>
+      <p>Widely viewed as a strong tip for attentive service. Easy to compute (move the decimal and double) and common on suggested tip lines printed on receipts.</p>
+      <h3>22–25%</h3>
+      <p>Reserved by many people for outstanding service, complex orders, long visits, or holidays when staff are especially busy. Also appears on some payment terminals as a suggested option—remember those suggestions are optional prompts, not laws.</p>
+
+      <h2>How to use this tip percentage calculator</h2>
+      <ol>
+        <li>Type the bill amount you want to tip on (usually pre-tax for restaurants).</li>
+        <li>Read the table for 10%, 15%, 18%, 20%, 22%, and 25%.</li>
+        <li>Optionally enter a custom rate such as 17 or 19.5 to highlight that row.</li>
+        <li>When you are ready to split the chosen total among friends, open the <a href="/split-bill.html">bill splitter</a> or the main <a href="/">tip calculator</a>.</li>
+      </ol>
+
+      <h2>Pre-tax vs after-tax tipping</h2>
+      <p>Classic etiquette calculates the tip on the food-and-drink subtotal before sales tax. Tax is not service. The dollar difference is often small, so some people tip on the final line for speed. If your receipt already combines everything, enter that larger number here and choose a percentage you are comfortable with—just know the tip will be slightly higher than a pure pre-tax calculation.</p>
+
+      <h2>When percentages are the wrong tool</h2>
+      <p>Buffet lines, coffee counters, and hotel housekeeping often work better with a flat amount or a local custom than with 20% of a tiny ticket. Delivery may warrant a percentage of the food plus a minimum dollar floor for short trips. Always read the receipt for service charges already applied so you do not double-tip by accident.</p>
+
+      <h2>Privacy and advice disclaimer</h2>
+      <p>Numbers never leave your browser. Percentage guides are educational, not financial advice, and tipping norms vary—see our <a href="/terms.html">terms</a> and <a href="/privacy.html">privacy policy</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html" aria-current="page">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+
+  <script src="ads.js" defer></script>
+  <script src="tip-percentage.js" defer></script>
+</body>
+</html>

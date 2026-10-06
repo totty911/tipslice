@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Split the Bill Calculator – Even Shares with Tip &amp; Tax | TipSlice</title>
+  <meta name="description" content="Free bill splitter: divide a restaurant check evenly with tip and optional sales tax. See each person’s share in seconds—no app, no sign-up.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://totty911.github.io/tipslice/split-bill.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://totty911.github.io/tipslice/split-bill.html">
+  <meta property="og:title" content="Split the Bill Calculator | TipSlice">
+  <meta property="og:description" content="Divide a check evenly with tip and tax. Instant per-person totals in your browser.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Bill Splitter","url":"https://totty911.github.io/tipslice/split-bill.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#bill">Skip to calculator</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="ad-slot ad-leaderboard" data-ad-zone="leaderboard" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+  </div>
+
+  <main class="wrap" id="main">
+    <h1>Split the Bill</h1>
+    <p class="lede">Divide a check evenly—including tip and optional tax—so everyone knows what to send in the group chat.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Bill splitter</h2>
+      <form id="split-form" class="card" novalidate autocomplete="off">
+        <div class="field">
+          <label for="bill">Bill amount</label>
+          <div class="input-affix">
+            <span class="affix" aria-hidden="true">$</span>
+            <input id="bill" name="bill" type="text" inputmode="decimal" placeholder="0.00" aria-describedby="bill-hint">
+          </div>
+          <p id="bill-hint" class="hint">Subtotal before tip. Add tax below if you want it in the split.</p>
+        </div>
+
+        <div class="field">
+          <label for="tip">Tip percentage</label>
+          <div class="input-affix affix-right">
+            <input id="tip" name="tip" type="text" inputmode="decimal" value="18" placeholder="18">
+            <span class="affix" aria-hidden="true">%</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="people">Number of people</label>
+          <div class="stepper">
+            <button type="button" class="step" data-step="-1" aria-label="One fewer person">−</button>
+            <input id="people" name="people" type="text" inputmode="numeric" value="2" aria-describedby="people-hint">
+            <button type="button" class="step" data-step="1" aria-label="One more person">+</button>
+          </div>
+          <p id="people-hint" class="hint">Even split, 1–100 people.</p>
+        </div>
+
+        <div class="field">
+          <label class="switch">
+            <input type="checkbox" id="tax-toggle" aria-controls="tax-fields">
+            <span class="switch-track" aria-hidden="true"></span>
+            <span>Add sales tax</span>
+          </label>
+          <div id="tax-fields" class="tax-fields" hidden>
+            <label for="tax">Tax rate</label>
+            <div class="input-affix affix-right">
+              <input id="tax" name="tax" type="text" inputmode="decimal" placeholder="e.g. 8.25">
+              <span class="affix" aria-hidden="true">%</span>
+            </div>
+            <label class="check">
+              <input type="checkbox" id="tip-on-tax">
+              <span>Tip on the after-tax total</span>
+            </label>
+          </div>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Calculate</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="card results" id="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Each person pays</h2>
+        <div aria-live="polite" aria-atomic="true">
+          <div class="per-person">
+            <div class="big-stat">
+              <span class="stat-label">Share per person</span>
+              <output id="out-each" class="stat-value">$0.00</output>
+            </div>
+            <div class="big-stat secondary">
+              <span class="stat-label">Tip per person</span>
+              <output id="out-tip-each" class="stat-value">$0.00</output>
+            </div>
+          </div>
+          <dl class="breakdown">
+            <div><dt>Bill</dt><dd id="out-bill">$0.00</dd></div>
+            <div id="row-tax" hidden><dt>Tax</dt><dd id="out-tax">$0.00</dd></div>
+            <div><dt>Tip</dt><dd id="out-tip">$0.00</dd></div>
+            <div class="grand"><dt>Group total</dt><dd id="out-total">$0.00</dd></div>
+          </dl>
+          <p class="hint" id="out-note"></p>
+        </div>
+      </section>
+    </section>
+
+    <aside class="ad-slot ad-rectangle" data-ad-zone="rectangle" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+    </aside>
+
+    <article class="content">
+      <h2>Why a dedicated bill splitter helps</h2>
+      <p>Group dinners stall at the same moment every time: the check is face-down on the table, someone opens a notes app, and three people disagree about whether tax belongs in the tip base. A focused bill splitter removes that friction. You enter one total, a tip rate, and how many people are paying. TipSlice returns a clear per-person share and a breakdown you can screenshot or read aloud.</p>
+      <p>Unlike a general tip calculator that starts from “one diner,” this page defaults to two people and emphasizes the even split. It still supports sales tax and the choice to tip before or after tax, so the math matches how your group actually settles up.</p>
+
+      <h2>How to split a restaurant bill fairly</h2>
+      <ol>
+        <li><strong>Confirm what is already on the receipt.</strong> Look for automatic gratuity on large parties, corkage, or a service charge. If a tip is already included, set the tip field to zero or add only what you want on top.</li>
+        <li><strong>Decide on even vs. itemized.</strong> Even splits work when orders are similar in price. If one person ordered steak and another had soup, each person can run this tool on their own subtotal instead.</li>
+        <li><strong>Agree on a tip rate before dividing.</strong> Settling the percentage first avoids redoing the math when someone prefers 20% over 15%.</li>
+        <li><strong>Include tax only once.</strong> If the printed total already has tax, enter that amount as the bill and leave the tax switch off. If you have a pre-tax subtotal, enter it and switch tax on with your local rate.</li>
+        <li><strong>Use the rounded share.</strong> TipSlice rounds each person’s share up to the next cent so the group never comes up short when paying the restaurant.</li>
+      </ol>
+
+      <h2>Common split scenarios</h2>
+      <h3>Friends splitting one check</h3>
+      <p>Enter the food-and-drink subtotal, pick a tip (18% is a solid default in many U.S. restaurants), set the headcount, and send the “share per person” figure in your chat. If someone paid the whole bill on a card, the others can Venmo or cash-app that exact amount.</p>
+      <h3>Couples or roommates</h3>
+      <p>Two-person splits are the default here. Add tax if you are working from a pre-tax menu total. For recurring takeout nights, bookmark this page and keep the tip percentage you already agree on.</p>
+      <h3>Office lunches and team outings</h3>
+      <p>Larger groups often see an automatic gratuity. Read the receipt first. If 18% is already printed, leave tip at 0% in the tool (or enter only an extra amount as a percentage of the bill if you want to add more). Splitting after the fact with a clear per-person number reduces awkward follow-ups.</p>
+
+      <h2>Rounding and leftover cents</h2>
+      <p>Dividing money by three, five, or seven rarely lands on exact cents. This splitter rounds each person’s total up so cash or peer payments cover the restaurant’s charge. A short note under the results explains when the combined shares sit a few cents above the true total. That small overage is usually easier than asking one person to cover a shortfall.</p>
+
+      <h2>Related TipSlice tools</h2>
+      <p>Need a full tip flow with preset chips? Use the main <a href="/">tip calculator</a>. Want to compare what 15% vs 20% costs on the same bill? Try the <a href="/tip-percentage.html">tip percentage guide</a>. Separating tax from tip? The <a href="/sales-tax-calculator.html">sales tax calculator</a> isolates that step.</p>
+
+      <h2>Privacy</h2>
+      <p>All math runs in your browser. Bill amounts are not uploaded to TipSlice. See the <a href="/privacy.html">privacy policy</a> for advertising and cookie details.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html" aria-current="page">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+
+  <script src="ads.js" defer></script>
+  <script src="split-bill.js" defer></script>
+</body>
+</html>
