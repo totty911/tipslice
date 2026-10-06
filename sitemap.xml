@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://totty911.github.io/tipslice/</loc><lastmod>2026-10-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://totty911.github.io/tipslice/split-bill.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://totty911.github.io/tipslice/tip-percentage.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://totty911.github.io/tipslice/sales-tax-calculator.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://totty911.github.io/tipslice/privacy.html</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://totty911.github.io/tipslice/terms.html</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://tipslice.com/</loc><lastmod>2026-10-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tipslice.com/split-bill.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tipslice.com/tip-percentage.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tipslice.com/sales-tax-calculator.html</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tipslice.com/privacy.html</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://tipslice.com/terms.html</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

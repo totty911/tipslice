@@ -3,7 +3,7 @@
 Client-side tip, bill-split, tip-percentage, and sales-tax calculators built for Google AdSense readiness.
 Plain HTML/CSS/JS, no build step, no backend. All math runs in the visitor's browser.
 
-**Live (always-on free hosting):** https://totty911.github.io/tipslice/  
+**Live (always-on free hosting):** https://tipslice.com/  
 Do not depend on a box/agent local server. Redeploy static files to surge (or another always-on static host).
 
 ## Pages
@@ -35,7 +35,7 @@ Do **not** invent a publisher ID or submit the application from this box.
 ### A. Create AdSense + add the site (Matt)
 1. Sign in to the Google account that should own TipSlice revenue: https://www.google.com/adsense/
 2. If new: **Get started** → accept terms → enter payment country / timezone.
-3. When asked for a site, add: `https://totty911.github.io/tipslice` (or a future custom domain).
+3. When asked for a site, add: `https://tipslice.com`.
 4. Complete any identity / address / phone verification Google requires (Matt only).
 5. In AdSense: **Sites** (or **Sites → site management**) → confirm `tipslice.surge.sh` is listed.
 6. Copy your **publisher ID**: looks like `ca-pub-` + 16 digits (Ads / Account settings).
