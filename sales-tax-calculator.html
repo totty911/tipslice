@@ -17,6 +17,46 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Sales Tax Calculator","url":"https://totty911.github.io/tipslice/sales-tax-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
+  <script type="application/ld+json" id="faq-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I add sales tax to a price?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply the pre-tax price by the tax rate, then add that tax to the price. A $40 item at 8.25% is $40 times 0.0825, which is $3.30 in tax, so you pay $43.30. Choose Add tax, enter the price, and type the rate as a percent, such as 8.25, not 0.0825. The calculator rounds to the nearest cent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I figure out the price before tax?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you only have a total that already includes tax, divide by 1 plus the rate written as a decimal. A $43.30 total at 8.25% is $43.30 divided by 1.0825, which comes back to about $40. Choose Remove tax, enter the total, and type the same rate. Treat the result as a close estimate, because a cash register can round in a different order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I include sales tax when I calculate a tip?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common U.S. restaurant practice is to tip on the pre-tax food and drink total, so the tax itself is not part of the tip. If you only have a tax-inclusive total, use Remove tax to estimate the pre-tax amount, then tip on that figure. Tipping on the after-tax total is a bit more generous, and it is fine when that is what your group prefers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do I have to type the tax rate myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sales tax in the United States is a mix of state, city, and special-district rates, and those rates change. TipSlice does not look up your location or guess a percentage. Use the rate printed on a recent receipt from that store or restaurant, or the rate your state publishes, and enter it here."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#amount">Skip to calculator</a>
@@ -123,6 +163,20 @@
 
       <h2>Not tax advice</h2>
       <p>This page is a convenience calculator for personal estimates. It is not a filing tool, not legal advice, and not a substitute for a point-of-sale system or accountant. Businesses collecting tax should use approved software and local guidance. Travelers should confirm whether listed hotel or tour prices already include VAT or occupancy tax.</p>
+
+      <h2>Sales tax FAQ</h2>
+
+      <h3>How do I add sales tax to a price?</h3>
+      <p>Multiply the pre-tax price by the tax rate, then add that tax to the price. A $40 item at 8.25% is $40 times 0.0825, which is $3.30 in tax, so you pay $43.30. Choose Add tax, enter the price, and type the rate as a percent, such as 8.25, not 0.0825. The calculator rounds to the nearest cent.</p>
+
+      <h3>How do I figure out the price before tax?</h3>
+      <p>If you only have a total that already includes tax, divide by 1 plus the rate written as a decimal. A $43.30 total at 8.25% is $43.30 divided by 1.0825, which comes back to about $40. Choose Remove tax, enter the total, and type the same rate. Treat the result as a close estimate, because a cash register can round in a different order.</p>
+
+      <h3>Do I include sales tax when I calculate a tip?</h3>
+      <p>Common U.S. restaurant practice is to tip on the pre-tax food and drink total, so the tax itself is not part of the tip. If you only have a tax-inclusive total, use Remove tax to estimate the pre-tax amount, then tip on that figure. Tipping on the after-tax total is a bit more generous, and it is fine when that is what your group prefers.</p>
+
+      <h3>Why do I have to type the tax rate myself?</h3>
+      <p>Sales tax in the United States is a mix of state, city, and special-district rates, and those rates change. TipSlice does not look up your location or guess a percentage. Use the rate printed on a recent receipt from that store or restaurant, or the rate your state publishes, and enter it here.</p>
 
       <h2>Privacy</h2>
       <p>Prices and rates stay in your browser. TipSlice does not upload them. Details live in the <a href="/privacy.html">privacy policy</a>; usage limits are in the <a href="/terms.html">terms of use</a>.</p>

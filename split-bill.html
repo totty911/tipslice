@@ -17,6 +17,46 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Bill Splitter","url":"https://totty911.github.io/tipslice/split-bill.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
+  <script type="application/ld+json" id="faq-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you split a restaurant bill evenly with tip and tax?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add the tip, and the tax if it is not already in the total, before you divide. Splitting the food first and then guessing at the tip is how groups come up short. Enter the bill, the tip rate, and the number of people in the tool above. Each person's share already includes that person's slice of tax and tip."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if one person ordered a lot more than everyone else?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An even split is fair when the orders are close in price. If one person had steak and drinks and someone else had a salad, run this splitter on each person's own subtotal instead of forcing one average. You can still use the same tip percentage for everyone so the server is tipped on the full check."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who covers the leftover cents when the bill does not divide evenly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cash and peer-payment apps rarely split into exact cents. This page rounds each person's share up to the next cent, and a note says when the combined shares sit a few cents above the true total. That small overage is easier than asking one friend to make up a shortfall at the register."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should the person who pays the card be paid back for the tip too?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If one person puts the whole check on a card, everyone else owes their share of food, tax, and tip, not just the food. Send the share-per-person figure, which already includes those pieces. Leaving the tip as the cardholder's private cost is a common way groups under-tip without meaning to."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#bill">Skip to calculator</a>
@@ -151,6 +191,20 @@
 
       <h2>Rounding and leftover cents</h2>
       <p>Dividing money by three, five, or seven rarely lands on exact cents. This splitter rounds each person’s total up so cash or peer payments cover the restaurant’s charge. A short note under the results explains when the combined shares sit a few cents above the true total. That small overage is usually easier than asking one person to cover a shortfall.</p>
+
+      <h2>Bill splitting FAQ</h2>
+
+      <h3>How do you split a restaurant bill evenly with tip and tax?</h3>
+      <p>Add the tip, and the tax if it is not already in the total, before you divide. Splitting the food first and then guessing at the tip is how groups come up short. Enter the bill, the tip rate, and the number of people in the tool above. Each person's share already includes that person's slice of tax and tip.</p>
+
+      <h3>What if one person ordered a lot more than everyone else?</h3>
+      <p>An even split is fair when the orders are close in price. If one person had steak and drinks and someone else had a salad, run this splitter on each person's own subtotal instead of forcing one average. You can still use the same tip percentage for everyone so the server is tipped on the full check.</p>
+
+      <h3>Who covers the leftover cents when the bill does not divide evenly?</h3>
+      <p>Cash and peer-payment apps rarely split into exact cents. This page rounds each person's share up to the next cent, and a note says when the combined shares sit a few cents above the true total. That small overage is easier than asking one friend to make up a shortfall at the register.</p>
+
+      <h3>Should the person who pays the card be paid back for the tip too?</h3>
+      <p>Yes. If one person puts the whole check on a card, everyone else owes their share of food, tax, and tip, not just the food. Send the share-per-person figure, which already includes those pieces. Leaving the tip as the cardholder's private cost is a common way groups under-tip without meaning to.</p>
 
       <h2>Related TipSlice tools</h2>
       <p>Need a full tip flow with preset chips? Use the main <a href="/">tip calculator</a>. Want to compare what 15% vs 20% costs on the same bill? Try the <a href="/tip-percentage.html">tip percentage guide</a>. Separating tax from tip? The <a href="/sales-tax-calculator.html">sales tax calculator</a> isolates that step.</p>
