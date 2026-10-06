@@ -1,3 +1,1 @@
-# Placeholder only. After AdSense approval, replace this file with ONE line:
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-# (Use your real pub- ID without inventing one. Empty/comment-only is correct until then.)
+google.com, pub-5833914188606567, DIRECT, f08c47fec0942fa0
