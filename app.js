@@ -100,7 +100,6 @@
   }
 
   function calculate() {
-    if (shareUi) shareUi.clearFeedback();
     const errors = [];
 
     let bill = parseNum(billEl.value);
@@ -188,8 +187,12 @@
     if (isCustom && focus) customEl.focus();
   }
 
-  form.addEventListener('input', calculate);
+  form.addEventListener('input', () => {
+    if (shareUi) shareUi.clearFeedback();
+    calculate();
+  });
   form.addEventListener('change', (e) => {
+    if (shareUi) shareUi.clearFeedback();
     if (e.target.name === 'tip') syncCustomVisibility(true);
     if (e.target === taxToggle) {
       taxFields.hidden = !taxToggle.checked;
@@ -204,6 +207,7 @@
       const base = Number.isFinite(cur) ? Math.round(cur) : 1;
       const next = Math.min(MAX_PEOPLE, Math.max(1, base + Number(btn.dataset.step)));
       peopleEl.value = String(next);
+      if (shareUi) shareUi.clearFeedback();
       calculate();
     });
   });
@@ -224,6 +228,7 @@
     peopleEl.value = '1';
     taxFields.hidden = true;
     syncCustomVisibility(false);
+    if (shareUi) shareUi.clearFeedback();
     calculate();
     billEl.focus();
   });

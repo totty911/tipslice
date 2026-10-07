@@ -104,6 +104,7 @@
   }
 
   function fallbackCopy(text) {
+    var active = document.activeElement;
     var ta = document.createElement('textarea');
     ta.value = text;
     ta.setAttribute('readonly', '');
@@ -115,17 +116,42 @@
     var ok = false;
     try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
     document.body.removeChild(ta);
+    if (active && active !== ta && active.focus) {
+      try { active.focus(); } catch (err) { /* ignore */ }
+    }
     return ok;
   }
 
   function copyText(text) {
-    var api = navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText;
-    if (api) {
-      return navigator.clipboard.writeText(text).then(function () { return true; }, function () {
-        return fallbackCopy(text);
+    return new Promise(function (resolve) {
+      var settled = false;
+      function finish(ok) {
+        if (settled) return;
+        settled = true;
+        resolve(!!ok);
+      }
+      var timer = setTimeout(function () { finish(fallbackCopy(text)); }, 350);
+      var clip = null;
+      try {
+        if (navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText) {
+          clip = navigator.clipboard.writeText(text);
+        }
+      } catch (err) {
+        clip = Promise.reject(err);
+      }
+      if (!clip) {
+        clearTimeout(timer);
+        finish(fallbackCopy(text));
+        return;
+      }
+      Promise.resolve(clip).then(function () {
+        clearTimeout(timer);
+        finish(true);
+      }, function () {
+        clearTimeout(timer);
+        finish(fallbackCopy(text));
       });
-    }
-    return Promise.resolve(fallbackCopy(text));
+    });
   }
 
   function wire(opts) {
@@ -154,7 +180,7 @@
       if (ok) {
         if (copyBtn) copyBtn.textContent = 'Copied';
         showStatus('Copied split summary.', false);
-        timer = setTimeout(clearFeedback, 2000);
+        timer = setTimeout(clearFeedback, 2500);
       } else {
         if (copyBtn) copyBtn.textContent = label;
         showStatus('Could not copy automatically. Select this summary: ' + text, true);
@@ -174,7 +200,17 @@
       copyBtn.addEventListener('click', function () {
         var payload = payloadOrExplain();
         if (!payload) return;
-        copyText(payload.text).then(function (ok) { showCopied(ok, payload.text); });
+        // Confirm in this turn so a clipboard promise that never settles
+        // still changes the button. Revert only if the copy actually fails.
+        showCopied(true, payload.text);
+        var pending;
+        try { pending = copyText(payload.text); }
+        catch (err) { pending = Promise.resolve(fallbackCopy(payload.text)); }
+        Promise.resolve(pending).then(function (ok) {
+          if (!ok) showCopied(false, payload.text);
+        }, function () {
+          showCopied(false, payload.text);
+        });
       });
     }
 
@@ -191,7 +227,7 @@
         navigator.share(data).then(function () {
           if (timer) { clearTimeout(timer); timer = 0; }
           showStatus('Shared.', false);
-          timer = setTimeout(clearFeedback, 2000);
+          timer = setTimeout(clearFeedback, 2500);
         }, function (err) {
           if (err && err.name === 'AbortError') return;
           copyText(payload.text).then(function (ok) { showCopied(ok, payload.text); });
