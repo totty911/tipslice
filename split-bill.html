@@ -160,6 +160,11 @@
           </dl>
           <p class="hint" id="out-note"></p>
         </div>
+        <div class="share-actions">
+          <button type="button" class="btn btn-primary" id="copy-split">Copy split summary</button>
+          <button type="button" class="btn btn-secondary" id="share-split" hidden>Share</button>
+        </div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
       </section>
     </section>
 
@@ -178,7 +183,7 @@
         <li><strong>Decide on even vs. itemized.</strong> Even splits work when orders are similar in price. If one person ordered steak and another had soup, each person can run this tool on their own subtotal instead.</li>
         <li><strong>Agree on a tip rate before dividing.</strong> Settling the percentage first avoids redoing the math when someone prefers 20% over 15%.</li>
         <li><strong>Include tax only once.</strong> If the printed total already has tax, enter that amount as the bill and leave the tax switch off. If you have a pre-tax subtotal, enter it and switch tax on with your local rate.</li>
-        <li><strong>Use the rounded share.</strong> TipSlice rounds each person’s share up to the next cent so the group never comes up short when paying the restaurant.</li>
+        <li><strong>Use the rounded share.</strong> TipSlice rounds each person’s share up to the next cent so the group never comes up short when paying the restaurant. Copy split summary (or Share) sends that figure with a link that reopens the same split.</li>
       </ol>
 
       <h2>Common split scenarios</h2>
@@ -210,7 +215,7 @@
       <p>Need a full tip flow with preset chips? Use the main <a href="/">tip calculator</a>. Want to compare what 15% vs 20% costs on the same bill? Try the <a href="/tip-percentage.html">tip percentage guide</a>. Separating tax from tip? The <a href="/sales-tax-calculator.html">sales tax calculator</a> isolates that step.</p>
 
       <h2>Privacy</h2>
-      <p>All math runs in your browser. Bill amounts are not uploaded to TipSlice. See the <a href="/privacy.html">privacy policy</a> for advertising and cookie details.</p>
+      <p>All math runs in your browser. Bill amounts are not uploaded to TipSlice. A copied or shared link includes the amounts so someone else can open the same split. See the <a href="/privacy.html">privacy policy</a> for advertising and cookie details.</p>
     </article>
   </main>
 
@@ -229,6 +234,7 @@
   </footer>
 
   <script src="ads.js" defer></script>
+  <script src="share.js" defer></script>
   <script src="split-bill.js" defer></script>
 </body>
 </html>

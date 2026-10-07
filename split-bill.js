@@ -29,6 +29,11 @@
   const fmt = (cents) => money.format(cents / 100);
   const MAX_PEOPLE = 100;
   const MAX_BILL = 1e9;
+  const DEFAULT_PEOPLE = 2;
+  const DEFAULT_TIP = 18;
+  const SHARE_PATH = '/split-bill.html';
+  let shareState = null;
+  let shareUi = null;
 
   function parseNum(raw) {
     let s = String(raw).trim().replace(/[\s$%]/g, '');
@@ -44,7 +49,33 @@
     else el.removeAttribute('aria-invalid');
   }
 
+  function sharePayload() {
+    if (!shareState || shareState.errors || !(shareState.totalC > 0)) {
+      return {
+        error: shareState && shareState.errors
+          ? 'Fix the highlighted fields, then copy the summary.'
+          : 'Enter a bill amount first.'
+      };
+    }
+    const url = TipSliceShare.publicUrl(SHARE_PATH, shareState);
+    return { text: TipSliceShare.formatSummary(shareState, url), url: url };
+  }
+
+  function applySharedState() {
+    if (!window.TipSliceShare) return;
+    const s = TipSliceShare.readState(MAX_BILL, MAX_PEOPLE);
+    if (s.bill !== null) billEl.value = TipSliceShare.compact(s.bill, 2);
+    if (s.people !== null) peopleEl.value = String(s.people);
+    if (s.tip !== null) tipEl.value = TipSliceShare.compact(s.tip, 2);
+    if (s.tax !== null) {
+      taxToggle.checked = true;
+      taxEl.value = TipSliceShare.compact(s.tax, 3);
+      tipOnTaxEl.checked = s.tipOnTax;
+    }
+  }
+
   function calculate() {
+    if (shareUi) shareUi.clearFeedback();
     const errors = [];
     let bill = parseNum(billEl.value);
     const billBad = Number.isNaN(bill) || (bill !== null && bill > MAX_BILL);
@@ -104,6 +135,21 @@
     out.note.textContent = note;
     errorEl.hidden = errors.length === 0;
     errorEl.textContent = errors.join(' ');
+
+    shareState = {
+      include: errors.length === 0 && (billC > 0 || people !== DEFAULT_PEOPLE || tipRate !== DEFAULT_TIP || taxOn),
+      errors: errors.length > 0,
+      bill: billC / 100,
+      people: people,
+      tipRate: tipRate,
+      taxOn: taxOn,
+      tax: taxRate,
+      tipOnTax: taxOn && tipOnTaxEl.checked,
+      totalC: totalC,
+      totalPPC: eachC,
+      tipPPC: tipEachC
+    };
+    if (window.TipSliceShare && errors.length === 0) TipSliceShare.syncUrl(shareState);
   }
 
   form.addEventListener('input', calculate);
@@ -144,6 +190,15 @@
     billEl.focus();
   });
 
+  applySharedState();
   taxFields.hidden = !taxToggle.checked;
+  if (window.TipSliceShare && $('copy-split')) {
+    shareUi = TipSliceShare.wire({
+      copyButton: $('copy-split'),
+      shareButton: $('share-split'),
+      statusEl: $('share-status'),
+      getPayload: sharePayload
+    });
+  }
   calculate();
 })();

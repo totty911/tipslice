@@ -263,6 +263,11 @@
           </dl>
           <p class="hint" id="out-note"></p>
         </div>
+        <div class="share-actions">
+          <button type="button" class="btn btn-primary" id="copy-split">Copy split summary</button>
+          <button type="button" class="btn btn-secondary" id="share-split" hidden>Share</button>
+        </div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
       </section>
     </section>
 
@@ -282,7 +287,7 @@
         <li><strong>Pick a tip.</strong> Tap one of the preset buttons from 10% to 25%, or choose Custom and type any rate, including decimals like 17.5.</li>
         <li><strong>Set the party size.</strong> Use the plus and minus buttons or type a number. The per-person figures divide the tip and total evenly.</li>
         <li><strong>Add tax if you want it.</strong> Switch on sales tax, enter your local rate, and decide whether the tip should be based on the amount before or after tax.</li>
-        <li><strong>Read your split.</strong> The large figure is what each person pays. The breakdown below shows the bill, tax, tip, and overall total. Press Reset to start over.</li>
+        <li><strong>Read your split.</strong> The large figure is what each person pays. The breakdown below shows the bill, tax, tip, and overall total. Copy split summary to paste the numbers and a tipslice.com link, or use Share when your phone offers it. Press Reset to start over.</li>
       </ol>
       <p>Amounts are rounded to the nearest cent. When a total doesn't divide evenly, the per-person share is rounded up to the next cent so the group never comes up short, and a note shows how many cents the combined shares land over the real total.</p>
 
@@ -334,7 +339,7 @@
       <p>Need an even split with tip built in? Try the <a href="/split-bill.html">bill splitter</a>. Comparing rates? See the <a href="/tip-percentage.html">tip percentage guide</a>. Isolating tax? Use the <a href="/sales-tax-calculator.html">sales tax calculator</a>.</p>
 
       <h2>Your privacy</h2>
-      <p id="privacy">All of the math runs right here in your browser. The amounts you type are never sent to a server, stored in a database, or shared with anyone. Close the page and they're gone. Full details: <a href="/privacy.html">privacy policy</a> and <a href="/terms.html">terms of use</a>.</p>
+      <p id="privacy">All of the math runs right here in your browser. TipSlice does not upload your bill for storage or keep an account. Copy or Share only places a summary and link on your clipboard or in the share sheet you choose, and that link includes the amounts so the table can open the same split. Full details: <a href="/privacy.html">privacy policy</a> and <a href="/terms.html">terms of use</a>.</p>
     </article>
   </main>
 
@@ -353,6 +358,7 @@
   </footer>
 
   <script src="ads.js" defer></script>
+  <script src="share.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>
