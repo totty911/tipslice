@@ -19,11 +19,25 @@ Do not depend on a box/agent local server. Redeploy static files to surge (or an
 | `/sitemap.xml` | `sitemap.xml` | All public pages |
 | `/robots.txt` | `robots.txt` | Allow + sitemap pointer |
 
+## Share the split
+The tip calculator (`/`) and bill splitter (`/split-bill.html`) keep the current inputs in the page URL and can copy a plain-text summary plus a `https://tipslice.com/` link.
+
+| Param | Meaning |
+| --- | --- |
+| `b` | Bill amount |
+| `p` | People |
+| `t` | Tip percent (a non-preset rate opens Custom on the homepage) |
+| `x` | Tax percent; present means sales tax is on |
+| `o=1` | Tip on the after-tax total (only with `x`) |
+
+Example: `/?b=124.50&p=4&t=18` (also accepts a shorter `b=124.5`). Junk values are ignored. The address bar updates with `history.replaceState`. Nothing is posted.
+
 ## Shared assets
 | File | Purpose |
 | --- | --- |
 | `styles.css` | Mobile-first styles (light/dark) |
 | `ads.js` | **Single place** for `ADSENSE_CLIENT_ID` + slot IDs + year stamp |
+| `share.js` | Shareable query params, copy summary, optional Web Share |
 | `app.js` | Main tip calculator logic |
 | `split-bill.js` / `tip-percentage.js` / `sales-tax.js` | Page calculators |
 | `favicon.svg`, `404.html`, `CNAME`, `.surgeignore` | Chrome / hosting |

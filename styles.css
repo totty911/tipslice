@@ -184,6 +184,12 @@ input[aria-invalid="true"] { border-color: var(--danger); }
 .breakdown .grand { border-bottom: 0; font-size: 1.1rem; }
 .breakdown .grand dt { color: var(--text); font-weight: 700; }
 
+.share-actions { display: grid; gap: 8px; margin-top: 16px; }
+.share-actions .btn { width: 100%; min-height: 48px; font-size: 1rem; white-space: normal; line-height: 1.2; padding-top: 10px; padding-bottom: 10px; }
+.share-actions [hidden] { display: none !important; }
+.share-status { margin: 8px 0 0; min-height: 1.4em; font-size: .9rem; font-weight: 700; color: var(--primary); }
+.share-status.is-error { color: var(--danger); }
+
 /* SEO content */
 .content { margin: 8px 0 40px; }
 .content h2 { font-size: 1.5rem; line-height: 1.25; margin: 36px 0 10px; letter-spacing: -0.01em; }

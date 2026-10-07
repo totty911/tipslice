@@ -36,6 +36,12 @@
 
   const MAX_PEOPLE = 100;
   const MAX_BILL = 1e9;
+  const DEFAULT_PEOPLE = 1;
+  const DEFAULT_TIP = 18;
+  const SHARE_PATH = '/';
+  const PRESET_TIPS = [10, 15, 18, 20, 25];
+  let shareState = null;
+  let shareUi = null;
 
   /** Parse a user-typed number. Returns NaN for invalid input, null for empty. */
   function parseNum(raw) {
@@ -57,6 +63,40 @@
   function setInvalid(el, bad) {
     if (bad) el.setAttribute('aria-invalid', 'true');
     else el.removeAttribute('aria-invalid');
+  }
+
+  function sharePayload() {
+    if (!shareState || shareState.errors || !(shareState.totalC > 0)) {
+      return {
+        error: shareState && shareState.errors
+          ? 'Fix the highlighted fields, then copy the summary.'
+          : 'Enter a bill amount first.'
+      };
+    }
+    const url = TipSliceShare.publicUrl(SHARE_PATH, shareState);
+    return { text: TipSliceShare.formatSummary(shareState, url), url: url };
+  }
+
+  function applySharedState() {
+    if (!window.TipSliceShare) return;
+    const s = TipSliceShare.readState(MAX_BILL, MAX_PEOPLE);
+    if (s.bill !== null) billEl.value = TipSliceShare.compact(s.bill, 2);
+    if (s.people !== null) peopleEl.value = String(s.people);
+    if (s.tip !== null) {
+      if (PRESET_TIPS.indexOf(s.tip) !== -1) {
+        const radio = form.querySelector('input[name="tip"][value="' + s.tip + '"]');
+        if (radio) radio.checked = true;
+        customEl.value = '';
+      } else {
+        $('tip-custom-radio').checked = true;
+        customEl.value = TipSliceShare.compact(s.tip, 2);
+      }
+    }
+    if (s.tax !== null) {
+      taxToggle.checked = true;
+      taxEl.value = TipSliceShare.compact(s.tax, 3);
+      tipOnTaxEl.checked = s.tipOnTax;
+    }
   }
 
   function calculate() {
@@ -124,6 +164,21 @@
 
     errorEl.hidden = errors.length === 0;
     errorEl.textContent = errors.join(' ');
+
+    shareState = {
+      include: errors.length === 0 && (billC > 0 || people !== DEFAULT_PEOPLE || tipRate !== DEFAULT_TIP || taxOn),
+      errors: errors.length > 0,
+      bill: billC / 100,
+      people: people,
+      tipRate: tipRate,
+      taxOn: taxOn,
+      tax: taxRate,
+      tipOnTax: taxOn && tipOnTaxEl.checked,
+      totalC: totalC,
+      totalPPC: totalPPC,
+      tipPPC: tipPPC
+    };
+    if (window.TipSliceShare && errors.length === 0) TipSliceShare.syncUrl(shareState);
   }
 
   function syncCustomVisibility(focus) {
@@ -132,8 +187,12 @@
     if (isCustom && focus) customEl.focus();
   }
 
-  form.addEventListener('input', calculate);
+  form.addEventListener('input', () => {
+    if (shareUi) shareUi.clearFeedback();
+    calculate();
+  });
   form.addEventListener('change', (e) => {
+    if (shareUi) shareUi.clearFeedback();
     if (e.target.name === 'tip') syncCustomVisibility(true);
     if (e.target === taxToggle) {
       taxFields.hidden = !taxToggle.checked;
@@ -148,6 +207,7 @@
       const base = Number.isFinite(cur) ? Math.round(cur) : 1;
       const next = Math.min(MAX_PEOPLE, Math.max(1, base + Number(btn.dataset.step)));
       peopleEl.value = String(next);
+      if (shareUi) shareUi.clearFeedback();
       calculate();
     });
   });
@@ -168,11 +228,21 @@
     peopleEl.value = '1';
     taxFields.hidden = true;
     syncCustomVisibility(false);
+    if (shareUi) shareUi.clearFeedback();
     calculate();
     billEl.focus();
   });
 
+  applySharedState();
   syncCustomVisibility(false);
   taxFields.hidden = !taxToggle.checked;
+  if (window.TipSliceShare && $('copy-split')) {
+    shareUi = TipSliceShare.wire({
+      copyButton: $('copy-split'),
+      shareButton: $('share-split'),
+      statusEl: $('share-status'),
+      getPayload: sharePayload
+    });
+  }
   calculate();
 })();
