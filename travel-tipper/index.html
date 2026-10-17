@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Tipper – Tax, Tip, and Home Currency by City | TipSlice</title>
+  <meta name="description" content="Pick a city. Travel Tipper fills a sourced U.S. sales-tax rate or a cited country tipping norm, then calculates the tip, tax, total, split, and home-currency amount.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://tipslice.com/travel-tipper/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipslice.com/travel-tipper/">
+  <meta property="og:title" content="Travel Tipper | TipSlice">
+  <meta property="og:description" content="City tax rates and country tipping notes with the sources named, then the bill, tip, split, and home-currency total.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/styles.css?v=20261017d">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Travel Tipper","url":"https://tipslice.com/travel-tipper/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is my city missing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A U.S. city is listed only when a combined sales-tax rate was copied from a public table, with the source and date stored in the data file. A city with no sourced rate is left out on purpose. Outside the United States, the list is limited to cities in the countries covered by the travel guide, and every city in a country shares that country's cited norm." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Travel Tipper set a tip percent for each U.S. city?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Choosing New York or Dallas fills the tax field and leaves your tip percent alone. The form starts at 18% only so the box is not empty. That 18% is your starting choice, not a city rule. Country notes outside the United States do fill a percent, and the page says which national source it came from." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Use my location send?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nothing leaves the page. If you allow it, the browser supplies coordinates, and the script picks the nearest city in this list within 40 kilometers. There is no paid map service. If you refuse, type the city." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the home-currency total match my card?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The conversion uses the same mid-market table as the currency converter, and the page names that source and its time. A card network, a foreign-transaction fee, or a terminal that converts the charge for you can post a different amount. Compare the two before you accept a home-currency charge on the terminal." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#city">Skip to Travel Tipper</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="/favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <h1>Travel Tipper</h1>
+    <p class="lede">Pick a city. The tax rate or the country tipping note fills in from a cited source, then the page adds the tip, the tax, the total, and each person's share.</p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <p class="guide-jump">Country notes are the short version of <a href="/guides/tipping-when-traveling/">tipping when traveling</a>. A conversion without a city is the <a href="/currency-converter/">currency converter</a>.</p>
+    <p id="rate-status" class="hint" aria-live="polite">Loading exchange rates…</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Travel tipper</h2>
+      <form id="tipper-form" class="card" novalidate autocomplete="off">
+        <div class="field combo">
+          <label for="city">City</label>
+          <div class="combo-wrap">
+            <input id="city" name="city" type="text" role="combobox" aria-expanded="false" aria-controls="city-list" aria-autocomplete="list" placeholder="Type New York, Paris, Tokyo…" autocomplete="off">
+            <ul id="city-list" class="combo-list" role="listbox" hidden></ul>
+          </div>
+          <p class="hint">Search the list. A city is here only when its tax rate or its country's tipping note has a source in the data file.</p>
+        </div>
+        <p class="actions single"><button type="button" class="btn btn-secondary" id="locate-btn">Use my location</button></p>
+        <p id="loc-status" class="hint" aria-live="polite"></p>
+        <p id="place-note" class="hint">Pick a city to fill the tax rate or the country tipping note.</p>
+
+        <div class="field">
+          <label for="bill">Bill, before tip</label>
+          <input id="bill" name="bill" type="text" inputmode="decimal" placeholder="80.00" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="tip">Your tip percent</label>
+          <div class="presets tip-presets">
+            <button type="button" class="btn btn-secondary" data-tip="0">0%</button>
+            <button type="button" class="btn btn-secondary" data-tip="5">5%</button>
+            <button type="button" class="btn btn-secondary" data-tip="10">10%</button>
+            <button type="button" class="btn btn-secondary" data-tip="15">15%</button>
+            <button type="button" class="btn btn-secondary" data-tip="18">18%</button>
+            <button type="button" class="btn btn-secondary" data-tip="20">20%</button>
+          </div>
+          <div class="input-affix affix-right after-presets">
+            <input id="tip" name="tip" type="text" inputmode="decimal" value="18" autocomplete="off">
+            <span class="affix" aria-hidden="true">%</span>
+          </div>
+          <p class="hint">In a U.S. city this stays at the percent you set. In another country, choosing the city replaces it with that country's cited starting point. You can change it again.</p>
+        </div>
+
+        <div class="field">
+          <label for="tax">Sales tax to add</label>
+          <div class="input-affix affix-right">
+            <input id="tax" name="tax" type="text" inputmode="decimal" value="0" autocomplete="off">
+            <span class="affix" aria-hidden="true">%</span>
+          </div>
+          <label class="check" for="tip-on-tax">
+            <input type="checkbox" id="tip-on-tax">
+            Calculate the tip on the after-tax total
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="people">People</label>
+          <div class="stepper">
+            <button type="button" class="step" id="people-dec" aria-label="Fewer people">−</button>
+            <input id="people" name="people" type="text" inputmode="numeric" value="2" autocomplete="off">
+            <button type="button" class="step" id="people-inc" aria-label="More people">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="home">Home currency</label>
+          <select id="home" name="home"><option value="USD" selected>USD</option></select>
+          <p class="hint">Used when the bill's currency is different. Defaults to U.S. dollars.</p>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+        <p class="actions single"><button type="submit" class="btn btn-primary">Calculate</button></p>
+      </form>
+
+      <section class="card results" id="results" aria-live="polite">
+        <h2>Check</h2>
+        <dl class="breakdown">
+          <div><dt>Bill</dt><dd id="out-bill">—</dd></div>
+          <div><dt>Tax</dt><dd id="out-tax">—</dd></div>
+          <div><dt>Tip</dt><dd id="out-tip">—</dd></div>
+          <div class="grand"><dt>Total</dt><dd id="out-total">—</dd></div>
+          <div><dt>Each person</dt><dd id="out-share">—</dd></div>
+        </dl>
+        <p id="out-share-note" class="hint"></p>
+        <div id="home-block" hidden>
+          <h3>In your home currency</h3>
+          <dl class="breakdown">
+            <div class="grand"><dt>Total</dt><dd id="out-home-total">—</dd></div>
+            <div><dt>Each person</dt><dd id="out-home-share">—</dd></div>
+          </dl>
+          <p id="out-rate" class="hint"></p>
+        </div>
+        <div id="source-box" class="sources-inline"></div>
+        <p class="hint">Share link: <a id="share-link" href="https://tipslice.com/travel-tipper/">/travel-tipper/</a></p>
+        <button type="button" class="btn btn-secondary" id="copy-btn">Copy link</button>
+        <p id="copy-status" class="share-status" role="status"></p>
+      </section>
+    </section>
+
+    <article class="content">
+      <h2>What gets filled in, and what does not</h2>
+      <p>Travel Tipper is the page for a bill in a city you do not calculate every week. You type or pick the city. Two different facts may fill in.</p>
+      <p>For a U.S. city, the tax field becomes the combined rate copied from a public table for that city. The source and the date on that table are in the data file and on the result. New York City is 8.875% in New York's <a href="https://www.tax.ny.gov/pdf/publications/sales/pub718.pdf">Publication 718</a>, effective March 1, 2025, and that starred rate includes the metropolitan commuter transportation district portion. California cities come from the <a href="https://cdtfa.ca.gov/taxes-and-fees/rates.aspx">Department of Tax and Fee Administration city table</a> effective October 1, 2026: Los Angeles 10.25%, San Francisco 8.625%, San Jose 10%, Oakland 10.75%, Santa Monica 11.25%, and the other California rows in the file. Seattle is 10.55% on the <a href="https://dor.wa.gov/sites/default/files/2026-08/Q426_LSU-flyer-by-county.pdf">Washington Department of Revenue flyer</a> for October 1 through December 31, 2026, location code 1726. Houston, Dallas, Austin, San Antonio, Fort Worth, and El Paso are 8.25% on the <a href="https://comptroller.texas.gov/taxes/sales/city.php">Texas Comptroller city table</a> checked October 17, 2026. Boston and Cambridge meals are 7%: Massachusetts publishes a <a href="https://www.mass.gov/guides/sales-tax-on-meals">6.25% meals tax</a>, and both cities add the 0.75% local meals excise. Portland is 0% because the <a href="https://www.oregon.gov/dor/programs/businesses/pages/sales-tax.aspx">Oregon Department of Revenue</a> says the state has no general sales tax.</p>
+      <p>A U.S. city does not change your tip percent. The box starts at 18% so it is not empty. That number is yours. <a href="https://emilypost.com/advice/general-tipping-guide">Emily Post</a> still describes 15% to 20% before tax for sit-down service, which is the range in the <a href="/guides/restaurant-tipping/">restaurant guide</a>, not a separate custom for each city on this list. If you had set 20% and then pick Dallas, the field stays at 20%.</p>
+      <p>Outside the United States, the page sets the currency and a country figure. It does not invent a Paris percent and a Lyon percent. Toronto, Vancouver, Montreal, and Calgary use the <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/money.html">Government of Canada's</a> usual 15%. London, Manchester, and Edinburgh start at 10%, the low end of the 10% to 15% <a href="https://www.visitbritain.com/en/plan-your-trip/useful-information">VisitBritain</a> calls well received when a service charge was not already added. Paris, Lyon, and Nice start at 0% because the <a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Pourboire">French DGCCRF</a> says the displayed price includes service and a tip cannot be demanded. <a href="https://www.france.fr/en/article/money-france/">France.fr</a> adds that another 2% to 3% is customary when a meal was particularly good. Berlin, Munich, and Hamburg start at 5%, the low end of the <a href="https://www.germany.travel/media/redaktion/trade_relaunch/news_services/Germany_Resource_Guide_For_Travel_Advisors_2026.pdf">German National Tourist Board's</a> about 5% to 10%. Tokyo, Osaka, and Kyoto stay at 0% because the <a href="https://www.japan.travel/en/plan/tipping-in-japan/">Japan National Tourism Organization</a> says tipping is not customary. Sydney, Melbourne, and Brisbane stay at 0% because <a href="https://www.australia.com/en/facts-and-planning/about-australia/key-facts-about-australia.html">Tourism Australia</a> says tipping is not expected in most places, with 10% common only in upmarket restaurants.</p>
+      <p>Foreign tax is not filled from a VAT table this page does not have. The tax field starts at 0% abroad. Type a rate only when the bill adds one that is not already in the price. A printed service charge still beats the country note. Read that line before you add a second percent. The long version is the <a href="/guides/tipping-when-traveling/">travel guide</a>.</p>
+
+      <h2>How the total is built</h2>
+      <p>An $80 meal in New York, at the 8.875% Publication 718 rate and your 20% tip on the pre-tax bill, is $7.10 of tax and $16.00 of tip. The total is $103.10. Two people are $51.55 each, because each share is rounded up so the shares cover the check. Tick the after-tax box and the tip uses $87.10 instead of $80. That is the same split the <a href="/guides/pre-tax-vs-post-tax/">pre-tax guide</a> walks through. The link for this example is <a href="https://tipslice.com/travel-tipper/?c=nyc&amp;b=80&amp;p=2&amp;t=20&amp;x=8.875">/travel-tipper/?c=nyc&amp;b=80&amp;p=2&amp;t=20&amp;x=8.875</a>.</p>
+      <p>Abroad, the local total is converted with the same mid-market table as the <a href="/currency-converter/">currency converter</a>: ExchangeRate-API first, Frankfurter if that request fails. The result names the source and the time. It is not your card's posted charge. A terminal that offers to charge your home currency is using a different rate. Compare the two before you accept it.</p>
+      <p>Use my location asks the browser for permission and then finds the nearest city in this list within 40 kilometers. It does not call a paid map service. The coordinates stay in the page. If nothing on the list is that close, the page says so and waits for you to type.</p>
+
+      <h2>Rates and customs change</h2>
+      <p>A quarterly Washington flyer, a California district election, or a meals-tax vote can move a number after the date in the data file. Country tourism pages are revised on their own schedule. The receipt in your hand is the rate you were charged. If it disagrees with this page, pay the receipt and treat the page as the worksheet, not the register. This is not tax advice and not a promise about what a card will post.</p>
+
+      <h2>Travel Tipper FAQ</h2>
+      <h3>Why is my city missing?</h3>
+      <p>A U.S. city is listed only when a combined sales-tax rate was copied from a public table, with the source and date stored in the data file. A city with no sourced rate is left out on purpose. Outside the United States, the list is limited to cities in the countries covered by the travel guide, and every city in a country shares that country's cited norm.</p>
+      <h3>Does Travel Tipper set a tip percent for each U.S. city?</h3>
+      <p>No. Choosing New York or Dallas fills the tax field and leaves your tip percent alone. The form starts at 18% only so the box is not empty. That 18% is your starting choice, not a city rule. Country notes outside the United States do fill a percent, and the page says which national source it came from.</p>
+      <h3>What does Use my location send?</h3>
+      <p>Nothing leaves the page. If you allow it, the browser supplies coordinates, and the script picks the nearest city in this list within 40 kilometers. There is no paid map service. If you refuse, type the city.</p>
+      <h3>Will the home-currency total match my card?</h3>
+      <p>No. The conversion uses the same mid-market table as the currency converter, and the page names that source and its time. A card network, a foreign-transaction fee, or a terminal that converts the charge for you can post a different amount. Compare the two before you accept a home-currency charge on the terminal.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/currency-converter/">Currency</a>
+        <a href="/travel-tipper/" aria-current="page">Travel tipper</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+  <script src="/ads.js" defer></script>
+  <script src="/travel-tipper/places.js?v=20261017"></script>
+  <script src="/currency-converter/currency.js?v=20261017c" defer></script>
+  <script src="/travel-tipper/travel-tipper.js?v=20261017b" defer></script>
+</body>
+</html>

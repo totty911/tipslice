@@ -24,6 +24,7 @@ Do not depend on a box/agent local server. Redeploy static files to surge (or an
 | `/tip-percentage.html` | `tip-percentage.html` | Compare tip % amounts + guide |
 | `/sales-tax-calculator.html` | `sales-tax-calculator.html` | Add tax or reverse tax-inclusive totals |
 | `/currency-converter/` | `currency-converter/index.html` | Convert a bill, then add a tip percent |
+| `/travel-tipper/` | `travel-tipper/index.html` | City tax or country tip note, then split |
 | `/privacy.html` | `privacy.html` | Privacy policy (AdSense credibility) |
 | `/terms.html` | `terms.html` | Terms of use |
 | `/ads.txt` | `ads.txt` | Comment placeholder until real pub-id |

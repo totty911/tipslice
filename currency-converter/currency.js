@@ -2,6 +2,7 @@
 (function (factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
+  if (typeof window !== 'undefined') window.TipSliceFx = api;
   if (typeof document !== 'undefined') api.mount();
 })(function () {
   'use strict';
@@ -210,6 +211,18 @@
     return name + ' open USD table.' + when;
   }
 
+  async function fetchRateTable() {
+    try {
+      const next = normalizeEr(await fetchJson(ER_URL));
+      next.fallback = false;
+      return next;
+    } catch (primaryErr) {
+      const next = normalizeFrankfurter(await fetchJson(FRANKFURTER_URL));
+      next.fallback = true;
+      return next;
+    }
+  }
+
   function mount() {
     const form = $('fx-form');
     if (!form) return;
@@ -325,15 +338,8 @@
       rateError.hidden = true;
       retryBtn.disabled = true;
       try {
-        let next;
-        let fallbackNote = false;
-        try {
-          next = normalizeEr(await fetchJson(ER_URL));
-        } catch (primaryErr) {
-          next = normalizeFrankfurter(await fetchJson(FRANKFURTER_URL));
-          next.fallback = true;
-          fallbackNote = true;
-        }
+        const next = await fetchRateTable();
+        const fallbackNote = !!next.fallback;
         next.cached = false;
         writeCache(next);
         saved = readCache();
@@ -594,6 +600,9 @@
     normalizeEr: normalizeEr,
     normalizeFrankfurter: normalizeFrankfurter,
     formatMoney: formatMoney,
+    formatRate: formatRate,
+    sourceSentence: sourceSentence,
+    fetchRateTable: fetchRateTable,
     mount: mount
   };
 });

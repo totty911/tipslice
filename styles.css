@@ -280,3 +280,25 @@ select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3p
 .rate-actions .btn { min-height: 44px; }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; }
 #out-source { font-weight: 500; text-align: right; max-width: 60%; }
+.actions.single { grid-template-columns: 1fr; }
+.combo-wrap { position: relative; }
+.combo-list {
+  position: absolute; z-index: 5; left: 0; right: 0; top: 100%;
+  max-height: 240px; overflow: auto; list-style: none; margin: 4px 0 0; padding: 4px;
+  background: var(--surface); border: 2px solid var(--border); border-radius: 10px;
+}
+.combo-list[hidden] { display: none; }
+.combo-list button {
+  display: block; width: 100%; text-align: left; font: inherit; color: var(--text);
+  background: transparent; border: 0; border-radius: 8px; padding: 10px 12px; cursor: pointer;
+}
+.combo-list button:hover, .combo-list button[aria-selected="true"] {
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+}
+.tip-presets { grid-template-columns: repeat(3, 1fr); }
+.tip-presets .btn { min-height: var(--tap); padding: 0 8px; }
+.tip-presets .btn[aria-pressed="true"] { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+.after-presets { margin-top: 8px; }
+.sources-inline p { margin: 10px 0 0; font-size: .92rem; }
+#home-block h3 { margin: 14px 0 6px; font-size: 1.05rem; }
+#copy-btn { margin-top: 8px; }
