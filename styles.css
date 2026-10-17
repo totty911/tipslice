@@ -300,5 +300,22 @@ select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3p
 .tip-presets .btn[aria-pressed="true"] { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
 .after-presets { margin-top: 8px; }
 .sources-inline p { margin: 10px 0 0; font-size: .92rem; }
+.norm-alert {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+.norm-alert[hidden] { display: none; }
+.norm-alert.is-service { border-color: var(--primary); }
+.norm-alert.is-warning {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+}
+.norm-alert p { margin: 0; }
+.norm-alert .norm-title { line-height: 1.45; }
+.norm-alert.is-warning .norm-title { font-size: 1.05rem; }
+.norm-alert .norm-sources { margin-top: 8px; font-size: .92rem; }
 #home-block h3 { margin: 14px 0 6px; font-size: 1.05rem; }
 #copy-btn { margin-top: 8px; }

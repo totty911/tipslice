@@ -49,6 +49,11 @@
     return best;
   }
 
+  function tipForNorm(norm) {
+    if (!norm || norm.setsTip === false || norm.percent == null) return null;
+    return norm.percent;
+  }
+
   function mount() {
     const form = document.getElementById('tipper-form');
     const data = window.TRAVEL_TIPPER_DATA;
@@ -66,6 +71,7 @@
     const homeEl = $('home');
     const errorEl = $('form-error');
     const placeNote = $('place-note');
+    const normAlert = $('norm-alert');
     const locStatus = $('loc-status');
     const rateStatus = $('rate-status');
     const outBill = $('out-bill');
@@ -135,27 +141,61 @@
       });
     }
 
-    function choose(place, how) {
+    function choose(place) {
       active = place;
       cityInput.value = label(place);
       cityList.hidden = true;
       cityInput.setAttribute('aria-expanded', 'false');
       taxEl.value = String(place.taxPercent);
-      if (place.norm && data.norms[place.norm]) setTip(data.norms[place.norm].percent);
-      renderPlaceNote(how);
+      const nextTip = place.norm ? tipForNorm(data.norms[place.norm]) : null;
+      if (nextTip != null) setTip(nextTip);
+      renderPlaceNote();
       calculate({ silent: true });
     }
 
+    function appendSources(parent, sources) {
+      sources.forEach((src, i) => {
+        if (i) parent.append(document.createTextNode(' '));
+        const a = document.createElement('a');
+        a.href = src.url;
+        a.textContent = src.name;
+        parent.append(a);
+        parent.append(document.createTextNode('.'));
+      });
+    }
+
     function renderPlaceNote() {
+      normAlert.replaceChildren();
+      normAlert.className = 'norm-alert';
       if (!active) {
         placeNote.textContent = 'Pick a city to fill the tax rate or the country tipping note.';
+        normAlert.hidden = true;
         return;
       }
+      const norm = active.norm ? data.norms[active.norm] : null;
       if (active.countryCode === 'US') {
-        placeNote.textContent = active.city + ' fills the tax field from the source below. Your tip percent stays what you set. U.S. cities on this page do not each get their own tipping custom.';
+        placeNote.textContent = active.city + ' fills the tax field from the source below. Your tip percent stays what you set.';
       } else {
-        placeNote.textContent = active.city + ' uses ' + active.currency + ' and the ' + active.country + ' tipping note below. The tax field stays at 0% until you type a rate that is not already in the menu price.';
+        placeNote.textContent = active.city + ' uses ' + active.currency + '. The tax field stays at 0% until you type a rate that is not already in the menu price.';
       }
+      if (!norm) {
+        normAlert.hidden = true;
+        return;
+      }
+      normAlert.hidden = false;
+      if (norm.status === 'not-customary') normAlert.classList.add('is-warning');
+      else if (norm.status === 'service-included') normAlert.classList.add('is-service');
+      const title = document.createElement('p');
+      title.className = 'norm-title';
+      const strong = document.createElement('strong');
+      strong.textContent = norm.label + '. ';
+      title.appendChild(strong);
+      title.append(document.createTextNode(norm.text));
+      const sources = document.createElement('p');
+      sources.className = 'norm-sources';
+      sources.append(document.createTextNode('Source: '));
+      appendSources(sources, norm.sources);
+      normAlert.append(title, sources);
     }
 
     function writeSources(math) {
@@ -164,19 +204,16 @@
       const bits = [];
       if (active.tax) {
         bits.push(sourceLine('Sales tax', active.tax.name, active.tax.url, active.tax.asOfLabel + '. ' + active.tax.note));
-      } else if (active.norm) {
+      }
+      if (active.norm && data.norms[active.norm]) {
         const norm = data.norms[active.norm];
         const wrap = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = 'Tipping: ' + norm.label + '. ';
+        wrap.appendChild(strong);
         wrap.append(document.createTextNode(norm.text + ' '));
-        norm.sources.forEach((src, i) => {
-          if (i) wrap.append(document.createTextNode(' '));
-          const a = document.createElement('a');
-          a.href = src.url;
-          a.textContent = src.name;
-          wrap.append(a);
-          wrap.append(document.createTextNode('.'));
-        });
-        sourceBox.appendChild(wrap);
+        appendSources(wrap, norm.sources);
+        bits.push(wrap);
       }
       bits.forEach((node) => sourceBox.appendChild(node));
       if (math && math.homeText) {
@@ -334,7 +371,10 @@
         active = place;
         cityInput.value = label(place);
         taxEl.value = q.get('x') != null ? q.get('x') : String(place.taxPercent);
-        if (q.get('t') == null && place.norm && data.norms[place.norm]) setTip(data.norms[place.norm].percent);
+        if (q.get('t') == null) {
+          const nextTip = tipForNorm(data.norms[place.norm]);
+          if (nextTip != null) setTip(nextTip);
+        }
         renderPlaceNote();
       } else if (q.get('x') != null) {
         taxEl.value = q.get('x');
@@ -452,5 +492,5 @@
     });
   }
 
-  return { compute: compute, haversineKm: haversineKm, nearestPlace: nearestPlace, mount: mount };
+  return { compute: compute, haversineKm: haversineKm, nearestPlace: nearestPlace, tipForNorm: tipForNorm, mount: mount };
 });

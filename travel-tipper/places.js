@@ -7,45 +7,73 @@
   'use strict';
 
   var norms = {
+    US: {
+      status: "expected",
+      label: "Expected",
+      percent: null,
+      setsTip: false,
+      text: "A tip is expected for sit-down service. Emily Post describes 15% to 20% of the pre-tax bill. The percent stays what you set. This list does not invent a separate custom for each U.S. city.",
+      sources: [
+        { name: "Emily Post Institute, general tipping guide", url: "https://emilypost.com/advice/general-tipping-guide" }
+      ]
+    },
     CA: {
+      status: "expected",
+      label: "Expected",
       percent: 15,
-      text: "The Government of Canada says the standard tip is usually 15% of the bill, and that tipping for good service is common in restaurants, bars, taxis, and hotels. Toronto, Vancouver, Montreal, and Calgary all use that country figure. This list does not invent a separate percent for each city.",
+      setsTip: true,
+      text: "A tip is expected. The Government of Canada says the standard tip is usually 15% of the bill, and that tipping for good service is common in restaurants, bars, taxis, and hotels. Toronto, Vancouver, Montreal, and Calgary all use that country figure. This list does not invent a separate percent for each city.",
       sources: [
         { name: "Government of Canada, settling in Canada: money", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/money.html" }
       ]
     },
     GB: {
-      percent: 10,
-      text: "VisitBritain says tipping is not expected the way it is in some countries, staff must be paid at least the National Minimum Wage, and an optional service charge is sometimes added. If nothing was added, 10% to 15% for good restaurant service is described as well received. The field starts at 10%, the low end of that range, for London, Manchester, and Edinburgh alike.",
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "Tipping is optional. VisitBritain says it is not expected the way it is in some countries, staff must be paid at least the National Minimum Wage, and an optional service charge is sometimes added. Check the bill before you add anything. If nothing was added, 10% to 15% for good restaurant service is described as well received, and taxi fares are often rounded up. London, Manchester, and Edinburgh start at 0%. You can type a percent if you are choosing to tip.",
       sources: [
         { name: "VisitBritain, useful information", url: "https://www.visitbritain.com/en/plan-your-trip/useful-information" }
       ]
     },
     FR: {
+      status: "service-included",
+      label: "Service usually included",
       percent: 0,
-      text: "France's DGCCRF says service is included in the displayed price and that a tip cannot be demanded. France.fr says prices usually include tax and a 15% service charge, and that another 2% to 3% is customary when a meal was particularly good. Paris, Lyon, and Nice start at 0% for that reason.",
+      setsTip: true,
+      text: "Check the bill for a service charge before you add a tip. France's DGCCRF says service is included in the displayed price and that a tip cannot be demanded. Where service is charged, the menu says \"prix service compris.\" France.fr says prices usually include tax and a 15% service charge, and that another 2% to 3% is customary only when a meal was particularly good. Paris, Lyon, and Nice start at 0%. You can type a percent after you have read the bill.",
       sources: [
         { name: "DGCCRF, Pourboire", url: "https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Pourboire" },
         { name: "France.fr, money", url: "https://www.france.fr/en/article/money-france/" }
       ]
     },
     DE: {
-      percent: 5,
-      text: "The German National Tourist Board's 2026 advisor guide says service is generally included and that it is customary to leave about 5% to 10%. Berlin, Munich, and Hamburg start at 5%, the low end of that range.",
+      status: "service-included",
+      label: "Service usually included",
+      percent: 0,
+      setsTip: true,
+      text: "Check the bill for a service charge before you add a tip. The German National Tourist Board's 2026 advisor guide says service is generally included in restaurant prices. If the bill has no such charge and you want to leave something extra, about 5% to 10% is customary. Berlin, Munich, and Hamburg start at 0% so a second percent is not stacked on included service. You can type 5 or 10 after you have read the bill.",
       sources: [
         { name: "German National Tourist Board, 2026 resource guide (PDF)", url: "https://www.germany.travel/media/redaktion/trade_relaunch/news_services/Germany_Resource_Guide_For_Travel_Advisors_2026.pdf" }
       ]
     },
     JP: {
+      status: "not-customary",
+      label: "Not customary",
       percent: 0,
-      text: "The Japan National Tourism Organization says tipping is not common for restaurants, cafes, bars, taxis, or hotels, and that it can cause discomfort. A service charge is often already on a restaurant bill. Tokyo, Osaka, and Kyoto stay at 0%.",
+      setsTip: true,
+      text: "A tip is not customary here, and offering one can cause discomfort. The Japan National Tourism Organization says tipping is not common for restaurants, cafes, bars, taxis, or hotels, and that a service charge is often already on a restaurant bill. A discreet envelope for a private guide or interpreter who is used to overseas clients is a narrow exception, not a restaurant tip. Tokyo, Osaka, and Kyoto are set to 0%. You can change the percent if you still want to leave something.",
       sources: [
         { name: "Japan National Tourism Organization, tipping in Japan", url: "https://www.japan.travel/en/plan/tipping-in-japan/" }
       ]
     },
     AU: {
+      status: "optional",
+      label: "Optional",
       percent: 0,
-      text: "Tourism Australia says hotels and restaurants do not add a service charge, tipping is your choice, and it is not expected in most places. In upmarket restaurants, 10% for good service is common. Sydney, Melbourne, and Brisbane start at 0%.",
+      setsTip: true,
+      text: "Tipping is optional. Tourism Australia says hotels and restaurants do not add a service charge, tipping is your choice, and it is not expected in most places. In upmarket restaurants, 10% for good service is common. Sydney, Melbourne, and Brisbane start at 0%. Type 10 if you are choosing to leave that.",
       sources: [
         { name: "Tourism Australia, key facts", url: "https://www.australia.com/en/facts-and-planning/about-australia/key-facts-about-australia.html" }
       ]
@@ -68,7 +96,7 @@
   function us(id, city, region, lat, lng, rate, tax) {
     return {
       id: id, city: city, region: region, country: "United States", countryCode: "US",
-      currency: "USD", lat: lat, lng: lng, taxPercent: rate, tax: tax, norm: null
+      currency: "USD", lat: lat, lng: lng, taxPercent: rate, tax: tax, norm: "US"
     };
   }
   function abroad(id, city, region, country, code, currency, lat, lng) {
