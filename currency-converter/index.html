@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Currency Converter – Convert a Bill, Then Add a Tip | TipSlice</title>
+  <meta name="description" content="Convert a restaurant bill into your home currency and add a tip percent. Live mid-market rates load in your browser from a free public table, with the source and as-of time shown.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://tipslice.com/currency-converter/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipslice.com/currency-converter/">
+  <meta property="og:title" content="Currency Converter | TipSlice">
+  <meta property="og:description" content="Turn a local bill and a tip percent into a total in your home currency. Rates stay labeled with their source and time.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/styles.css?v=20261017b">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Currency Converter","url":"https://tipslice.com/currency-converter/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json" id="faq-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does TipSlice upload the amount I convert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The amount, the currencies, and the tip stay in the page. Your browser requests a public rate table from ExchangeRate-API, or from Frankfurter if that first request fails. The request does not include the numbers you typed. A table that loaded can be saved in this browser so a later visit can reuse it. The privacy policy describes that saved table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my card's dollar total different?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This page uses a mid-market rate from the named public table, or a rate you type. A card network converts the charge when it posts, and the issuer may add a foreign-transaction fee from your card agreement. A terminal that offers to charge you in your home currency uses its own rate on top of that. Compare the terminal's home-currency total with the total here before you accept the terminal's conversion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I add the tip before or after converting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A percent is a ratio, so 10% of the local bill and 10% of the converted bill are the same total when one rate is used for the whole check. Convert then tip does that in one step: it converts the bill, takes the percent of the converted amount, and adds them. If the extra charge is a flat fee in one currency rather than a percent, add that fee to the amount yourself and use Convert."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the rates do not load?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The page says so and does not invent a rate. Retry tries ExchangeRate-API and then Frankfurter again. If this browser saved a table earlier, you can use that saved table, and the status line keeps the saved time. You can also type the rate from your card app or from a cash receipt. A typed rate is labeled as yours and is not mixed with the live table."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#amount">Skip to converter</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/">
+          <img src="/favicon.svg" alt="" width="28" height="28">
+          <span>Tip<strong>Slice</strong></span>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <h1>Currency Converter</h1>
+    <p class="lede">Convert a bill into your home currency, then add a tip percent. The rate's source and time stay on the page.</p>
+    <p class="guide-jump">Which percent to type is covered in <a href="/guides/tipping-when-traveling/">tipping when traveling</a>. A dollar bill that only needs a tip belongs on the <a href="/">tip calculator</a>.</p>
+
+    <p id="rate-status" class="hint" aria-live="polite">Loading rates…</p>
+    <p id="rate-error" class="error" role="alert" hidden></p>
+    <div id="rate-actions" class="rate-actions" hidden>
+      <button type="button" class="btn btn-secondary" id="retry-btn">Retry</button>
+      <button type="button" class="btn btn-secondary" id="use-saved-btn" hidden>Use saved rates</button>
+    </div>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Currency converter</h2>
+      <form id="fx-form" class="card" novalidate autocomplete="off">
+        <fieldset class="field">
+          <legend>What to work out</legend>
+          <div class="mode-tabs" role="radiogroup" aria-label="What to work out">
+            <label class="chip"><input type="radio" name="mode" id="mode-convert" value="convert" checked><span>Convert</span></label>
+            <label class="chip"><input type="radio" name="mode" id="mode-tip" value="tip"><span>Convert then tip</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="amount">Amount in the local currency</label>
+          <input id="amount" name="amount" type="text" inputmode="decimal" placeholder="48.00" autocomplete="off">
+        </div>
+
+        <div class="pair-row">
+          <div class="field">
+            <label for="from">From</label>
+            <select id="from" name="from">
+              <option value="EUR">Euro (EUR)</option>
+              <option value="USD">US Dollar (USD)</option>
+            </select>
+          </div>
+          <div class="field swap-field">
+            <span class="visually-hidden" id="swap-label">Swap the two currencies</span>
+            <button type="button" class="btn btn-secondary swap-btn" id="swap-btn" aria-labelledby="swap-label">Swap</button>
+          </div>
+          <div class="field">
+            <label for="to">To (home currency)</label>
+            <select id="to" name="to">
+              <option value="USD" selected>US Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="tip-block" hidden>
+          <fieldset class="field">
+            <legend>Tip percent</legend>
+            <div class="presets">
+              <label class="chip"><input type="radio" name="tip-preset" value="0"><span>0%</span></label>
+              <label class="chip"><input type="radio" name="tip-preset" value="5"><span>5%</span></label>
+              <label class="chip"><input type="radio" name="tip-preset" value="10" checked><span>10%</span></label>
+              <label class="chip"><input type="radio" name="tip-preset" value="15"><span>15%</span></label>
+              <label class="chip"><input type="radio" name="tip-preset" value="20"><span>20%</span></label>
+              <label class="chip"><input type="radio" name="tip-preset" value="custom"><span>Custom</span></label>
+            </div>
+            <div class="custom-tip" id="custom-tip" hidden>
+              <label for="tip">Custom tip</label>
+              <div class="input-affix affix-right">
+                <input id="tip" name="tip" type="text" inputmode="decimal" placeholder="12.5" autocomplete="off">
+                <span class="affix" aria-hidden="true">%</span>
+              </div>
+            </div>
+            <p class="hint">Use 0% when the bill already includes service and you only want the conversion. The <a href="/guides/tipping-when-traveling/">travel guide</a> is where the percent comes from.</p>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label class="check" for="use-manual">
+            <input type="checkbox" id="use-manual" name="use-manual">
+            Use a rate I type
+          </label>
+          <div id="manual-fields" hidden>
+            <label for="manual-rate" id="manual-pair">1 EUR equals this many USD.</label>
+            <input id="manual-rate" name="manual-rate" type="text" inputmode="decimal" placeholder="1.12" autocomplete="off">
+            <p class="hint">Uses only this number, for a rate on a cash receipt or in your card app. The live table is ignored.</p>
+          </div>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn" disabled>Convert</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section class="card results" id="results" aria-labelledby="results-heading">
+        <h2 id="results-heading">Result</h2>
+        <div aria-live="polite" aria-atomic="true">
+          <div class="per-person">
+            <div class="big-stat">
+              <span class="stat-label" id="out-primary-label">Converted amount</span>
+              <output id="out-primary" class="stat-value">—</output>
+            </div>
+            <div class="big-stat secondary" id="out-secondary-wrap" hidden>
+              <span class="stat-label" id="out-secondary-label">Tip</span>
+              <output id="out-secondary" class="stat-value">—</output>
+            </div>
+          </div>
+          <dl class="breakdown">
+            <div id="out-bill-row" hidden><dt>Bill in home currency</dt><dd id="out-bill">—</dd></div>
+            <div id="out-tip-row" hidden><dt>Tip</dt><dd id="out-tip">—</dd></div>
+            <div><dt>Rate used</dt><dd id="out-rate">—</dd></div>
+            <div><dt>Other direction</dt><dd id="out-inverse">—</dd></div>
+            <div><dt>Source</dt><dd id="out-source">—</dd></div>
+          </dl>
+          <p class="hint">A mid-market rate, or a rate you typed. Not a prediction of the posted card charge.</p>
+        </div>
+      </section>
+    </section>
+
+    <article class="content">
+      <h2>What the converter is for</h2>
+      <p>You have a bill in the currency on the table and a card in another currency. The page converts that bill at a published mid-market rate. If you choose <strong>Convert then tip</strong>, it then adds a percent and shows the total in the home currency.</p>
+      <p>Your browser requests the open <a href="https://open.er-api.com/v6/latest/USD">ExchangeRate-API USD table</a>. No key is sent, and the amount you type is not part of the request. If that address fails, the page tries <a href="https://api.frankfurter.dev/v2/rates?base=USD">Frankfurter</a> and says so. The status line names the source. ExchangeRate-API's open table has one update time for the whole list, printed as "as of." Frankfurter dates each currency, and those dates are not always the same day, so the line names the date on the currencies you picked.</p>
+      <p>TipSlice does not add a foreign-transaction fee or a cash-desk commission. The result uses the named rate, rounded to the home currency's usual minor units. Yen land on whole yen. Dollar lines stop at cents. With a tip, the bill line plus the tip line equals the total.</p>
+
+      <h2>Convert, then add the tip</h2>
+      <p>Enter the local amount, set From to the bill's currency and To to the currency you want, and pick a percent. The page converts the bill, takes that percent of the converted amount, and adds them. A percent is a ratio, so 10% before the conversion and 10% after it match when one rate covers the whole check. A flat cover charge is not a percent. Add it to the amount, or leave it out, before you convert.</p>
+      <p>Check the rounding against a made-up rate that will not drift. If 1 euro equals 1.12 dollars, a 48 euro bill is 53.76 dollars. Ten percent is 5.376 dollars, which rounds to 5.38, and the total is 59.14 dollars. The button opens 48 euros at 10% on today's table, not at 1.12. Tick <strong>Use a rate I type</strong> and enter 1.12 when you want that illustration exactly.</p>
+      <p><a class="btn btn-primary" href="https://tipslice.com/currency-converter/?a=48&amp;from=EUR&amp;to=USD&amp;t=10&amp;m=tip">Open 48 euros at 10%</a></p>
+      <p>Zero percent is a real setting. <a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Pourboire">France's DGCCRF</a> says displayed prices include service and that a tip cannot be demanded, so 0% only translates the check. The <a href="/guides/tipping-when-traveling/">travel guide</a> sets that rule beside Canada, Britain, Germany, Japan, and Australia. A U.S. sit-down meal uses the <a href="/guides/restaurant-tipping/">restaurant guide</a> and the <a href="/">tip calculator</a> instead of this page.</p>
+
+      <h2>What this rate leaves out</h2>
+      <p>The downloaded figure is a mid-market quote with no markup on it. It is not your card statement, and it is not the European Central Bank's euro reference rate. The card network converts the charge when it posts, and the issuer may add a foreign-transaction fee from the card agreement. Some cards charge none. If your banking app already shows the rate it will use, type that rate. The result is labeled as yours.</p>
+      <p>A terminal may offer to charge you in your home currency. <a href="https://www.visa.com/en-us/personal/travel/dynamic-currency-conversion">Visa's page on dynamic currency conversion</a> says that offer includes an exchange rate and extra fees, that the screen should show both amounts, the rate, and any markup, and that you can decline. Visa says to decline, and to tell your issuer, if those details are missing or you feel pushed. In the European Union, <a href="https://eur-lex.europa.eu/eli/reg/2021/1230/oj/eng">Regulation (EU) 2021/1230</a> requires a party offering conversion at an ATM or the point of sale to show the charge as a percentage markup over the latest ECB euro reference rate, and to say you may pay in the merchant's currency instead. The Commission's <a href="https://europa.eu/youreurope/business/finance-funding/making-receiving-payments/electronic-cash-payments/index_en.htm">Your Europe page</a> states the same duty briefly. Compare the terminal's home-currency total with the total here before you accept it. A typed rate is also how you use the number on an airport cash receipt. The page will not blend that number with the downloaded table.</p>
+
+      <h2>When the rate does not load</h2>
+      <p>If both tables fail, the form says so and leaves the result blank. It does not substitute a rate baked into the page. <strong>Retry</strong> asks again. <strong>Use saved rates</strong> applies a table this browser stored earlier and keeps that table's time on the status line. Saved rates can be stale. Typing a rate works with no network. Clearing site data for tipslice.com deletes the saved table. The <a href="/privacy.html">privacy policy</a> says what the request contains.</p>
+
+      <h2>Currency converter FAQ</h2>
+
+      <h3>Does TipSlice upload the amount I convert?</h3>
+      <p>No. The amount, the currencies, and the tip stay in the page. Your browser requests a public rate table from ExchangeRate-API, or from Frankfurter if that first request fails. The request does not include the numbers you typed. A table that loaded can be saved in this browser so a later visit can reuse it. The <a href="/privacy.html">privacy policy</a> describes that saved table.</p>
+
+      <h3>Why is my card's dollar total different?</h3>
+      <p>This page uses a mid-market rate from the named public table, or a rate you type. A card network converts the charge when it posts, and the issuer may add a foreign-transaction fee from your card agreement. A terminal that offers to charge you in your home currency uses its own rate on top of that. Compare the terminal's home-currency total with the total here before you accept the terminal's conversion.</p>
+
+      <h3>Should I add the tip before or after converting?</h3>
+      <p>A percent is a ratio, so 10% of the local bill and 10% of the converted bill are the same total when one rate is used for the whole check. <strong>Convert then tip</strong> does that in one step: it converts the bill, takes the percent of the converted amount, and adds them. If the extra charge is a flat fee in one currency rather than a percent, add that fee to the amount yourself and use <strong>Convert</strong>.</p>
+
+      <h3>What if the rates do not load?</h3>
+      <p>The page says so and does not invent a rate. <strong>Retry</strong> tries ExchangeRate-API and then Frankfurter again. If this browser saved a table earlier, you can use that saved table, and the status line keeps the saved time. You can also type the rate from your card app or from a cash receipt. A typed rate is labeled as yours and is not mixed with the live table.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/currency-converter/" aria-current="page">Currency</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+
+  <script src="/ads.js" defer></script>
+  <script src="/currency-converter/currency.js?v=20261017" defer></script>
+</body>
+</html>

@@ -256,3 +256,27 @@ input[aria-invalid="true"] { border-color: var(--danger); }
 .sources { padding-left: 1.2rem; }
 .sources li { margin-bottom: 8px; }
 .content h2 { scroll-margin-top: 12px; }
+
+select {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 35%, transparent); }
+.pair-row { display: grid; gap: 8px; }
+@media (min-width: 560px) {
+  .pair-row { grid-template-columns: 1fr auto 1fr; align-items: end; }
+  .pair-row .field { margin-bottom: 18px; }
+}
+.swap-field { margin-bottom: 18px; }
+.swap-btn { width: 100%; }
+.rate-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.rate-actions .btn { min-height: 44px; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+#out-source { font-weight: 500; text-align: right; max-width: 60%; }
