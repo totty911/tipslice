@@ -77,6 +77,116 @@
       sources: [
         { name: "Tourism Australia, key facts", url: "https://www.australia.com/en/facts-and-planning/about-australia/key-facts-about-australia.html" }
       ]
+    },
+    KR: {
+      status: "not-customary",
+      label: "Not customary",
+      percent: 0,
+      setsTip: true,
+      text: "A tip is not required or expected. The Korea Tourism Organization says tipping is not required or expected in Korea, and that asking for more water or side dishes does not add a charge. Seoul, Busan, and Incheon are set to 0%. You can change the percent if you still want to leave something.",
+      sources: [
+        { name: "Korea Tourism Organization, about Korean food", url: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140727" }
+      ]
+    },
+    IT: {
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "Tipping is optional. Italia.it says tipping is not compulsory and there are no established rules, but it is customary to leave an amount close to 10% of the bill when you are satisfied with the service. Rome, Milan, and Florence start at 0%. Type a percent close to 10 if you are choosing to leave that.",
+      sources: [
+        { name: "Italia.it, money, payments, and tipping", url: "https://www.italia.it/en/italy/practical-information/money-payments-and-tipping-in-italy" }
+      ]
+    },
+    ES: {
+      status: "service-included",
+      label: "Service usually included",
+      percent: 0,
+      setsTip: true,
+      text: "Check the bill before you add a tip. Spain's tourism site says it is not obligatory to tip because establishments include the service charge. It is still common to tip in bars, restaurants, hotels, and taxis, usually between 5% and 10% of the total, depending on the bill and the guest. Madrid, Barcelona, and Seville start at 0%. Type 5 or 10 after you have read the bill.",
+      sources: [
+        { name: "spain.info, currency and tips", url: "https://www.spain.info/en/travel-tips/coins-banknotes/" }
+      ]
+    },
+    NL: {
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "Tipping is optional. Holland.com says a tip of about 10% is quite acceptable, that the amount is not set in stone, and that you can leave more for a fantastic experience or nothing if the service or meal was poor. Waitstaff are not described as living off tips. Amsterdam, Rotterdam, and The Hague start at 0%. You can type 10 if you are choosing that amount.",
+      sources: [
+        { name: "Holland.com, tipping and cash", url: "https://www.holland.com/global/tourism/getting-around/information/tipping-and-cash" }
+      ]
+    },
+    CH: {
+      status: "round-up",
+      label: "Round up",
+      percent: 0,
+      setsTip: true,
+      text: "Switzerland Tourism says the guest is not obliged to tip. In many restaurants it is customary to pay a tip of approximately 10%, or to round the bill up to a round amount. Zurich, Geneva, and Bern start at 0% so the page does not invent a percent when the source also allows a round-up. You can type 10 if that is the amount you want.",
+      sources: [
+        { name: "Switzerland Tourism, tipping", url: "https://www.myswitzerland.com/en-us/planning/about-switzerland/general-facts/money-and-shopping/tipping/" }
+      ]
+    },
+    MX: {
+      status: "expected",
+      label: "Expected",
+      percent: 10,
+      setsTip: true,
+      text: "A tip is a common practice, and it is not mandatory. Mexico's tourism secretariat says it is common to tip 10% to 15% in restaurants, and that small tips are appreciated for hotel housekeeping and tour guides. Mexico City, Guadalajara, and Cancún start at 10%, the low end of that range. You can change it.",
+      sources: [
+        { name: "Mexico Ministry of Tourism, visitor FAQ", url: "https://www.mexico-invita.sectur.gob.mx/en/useful-services/faq" }
+      ]
+    },
+    DK: {
+      status: "service-included",
+      label: "Service usually included",
+      percent: 0,
+      setsTip: true,
+      text: "Check the bill before you add a tip. VisitDenmark says service charges are included in hotel, restaurant, and taxi bills. If you feel you received great service, you may tip, and how much is up to you. There is no set etiquette. Copenhagen, Aarhus, and Odense start at 0%.",
+      sources: [
+        { name: "VisitDenmark, tipping", url: "https://www.visitdenmark.com/faq/tipping" }
+      ]
+    },
+    BR: {
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "Tipping is optional. Visit Brasil says tips are not mandatory but are appreciated. In restaurants, bars, and similar services, it is common to leave approximately 10% of the total where a tip is not already included in the service price. Hotels: a small tip is customary for staff providing additional services. Rio de Janeiro, São Paulo, and Brasília start at 0%. Type 10 only after you have checked whether the bill already includes it.",
+      sources: [
+        { name: "Visit Brasil, taxes and tips", url: "https://www.visitbrasil.com/en/info/taxes-and-tips/" }
+      ]
+    },
+    SG: {
+      status: "service-included",
+      label: "Service usually included",
+      percent: 0,
+      setsTip: true,
+      text: "Check the bill before you add a tip. Visit Singapore says tipping is not common because many establishments already include a 10% service charge. Some restaurants and bars omit that charge and leave tipping optional; in that case a 10% tip is appreciated. Singapore starts at 0%.",
+      sources: [
+        { name: "Visit Singapore, essential guide (PDF)", url: "https://www.visitsingapore.com/content/dam/MICE/Global/downloads/bt_precinct_guide.pdf" }
+      ]
+    },
+    VN: {
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "Tipping is optional. Vietnam Tourism says there is no set rule because tipping is not a normal part of Vietnamese culture. It is increasingly common for beauty salons and private tour guides. In restaurants and cafes it is not expected, but it is appreciated. Hanoi, Ho Chi Minh City, and Da Nang start at 0%. You can type a percent if you want to leave one.",
+      sources: [
+        { name: "Vietnam Tourism, currency and payments", url: "https://vietnam.travel/things-to-do/currency-and-payments-vietnam" }
+      ]
+    },
+    AE: {
+      status: "optional",
+      label: "Optional",
+      percent: 0,
+      setsTip: true,
+      text: "This note is the emirate of Abu Dhabi, from Experience Abu Dhabi, not a separate rule for every emirate. Tipping is not expected, but it is commonly practised. Many fine-dining bills add a service charge, usually around 10%, and a tourism levy of 6%. If those charges are not included, 10% to 15% is described as an appreciated addition. Abu Dhabi starts at 0%. Check the bill, then type a percent only if you are adding one.",
+      sources: [
+        { name: "Experience Abu Dhabi, essential information", url: "https://visitabudhabi.ae/en/plan-your-trip/essential-info" }
+      ]
     }
   };
 
@@ -180,7 +290,36 @@
     abroad("kyoto", "Kyoto", "Kyoto", "Japan", "JP", "JPY", 35.0116, 135.7681),
     abroad("sydney", "Sydney", "New South Wales", "Australia", "AU", "AUD", -33.8688, 151.2093),
     abroad("melbourne", "Melbourne", "Victoria", "Australia", "AU", "AUD", -37.8136, 144.9631),
-    abroad("brisbane", "Brisbane", "Queensland", "Australia", "AU", "AUD", -27.4698, 153.0251)
+    abroad("brisbane", "Brisbane", "Queensland", "Australia", "AU", "AUD", -27.4698, 153.0251),
+    abroad("seoul", "Seoul", "Seoul", "South Korea", "KR", "KRW", 37.5665, 126.978),
+    abroad("busan", "Busan", "Busan", "South Korea", "KR", "KRW", 35.1796, 129.0756),
+    abroad("incheon", "Incheon", "Incheon", "South Korea", "KR", "KRW", 37.4563, 126.7052),
+    abroad("rome", "Rome", "Lazio", "Italy", "IT", "EUR", 41.9028, 12.4964),
+    abroad("milan", "Milan", "Lombardy", "Italy", "IT", "EUR", 45.4642, 9.19),
+    abroad("florence", "Florence", "Tuscany", "Italy", "IT", "EUR", 43.7696, 11.2558),
+    abroad("madrid", "Madrid", "Community of Madrid", "Spain", "ES", "EUR", 40.4168, -3.7038),
+    abroad("barcelona", "Barcelona", "Catalonia", "Spain", "ES", "EUR", 41.3874, 2.1686),
+    abroad("seville", "Seville", "Andalusia", "Spain", "ES", "EUR", 37.3891, -5.9845),
+    abroad("amsterdam", "Amsterdam", "North Holland", "Netherlands", "NL", "EUR", 52.3676, 4.9041),
+    abroad("rotterdam", "Rotterdam", "South Holland", "Netherlands", "NL", "EUR", 51.9225, 4.4792),
+    abroad("the-hague", "The Hague", "South Holland", "Netherlands", "NL", "EUR", 52.0705, 4.3007),
+    abroad("zurich", "Zurich", "Zurich", "Switzerland", "CH", "CHF", 47.3769, 8.5417),
+    abroad("geneva", "Geneva", "Geneva", "Switzerland", "CH", "CHF", 46.2044, 6.1432),
+    abroad("bern", "Bern", "Bern", "Switzerland", "CH", "CHF", 46.948, 7.4474),
+    abroad("mexico-city", "Mexico City", "Mexico City", "Mexico", "MX", "MXN", 19.4326, -99.1332),
+    abroad("guadalajara", "Guadalajara", "Jalisco", "Mexico", "MX", "MXN", 20.6597, -103.3496),
+    abroad("cancun", "Cancún", "Quintana Roo", "Mexico", "MX", "MXN", 21.1619, -86.8515),
+    abroad("copenhagen", "Copenhagen", "Capital Region", "Denmark", "DK", "DKK", 55.6761, 12.5683),
+    abroad("aarhus", "Aarhus", "Central Denmark", "Denmark", "DK", "DKK", 56.1629, 10.2039),
+    abroad("odense", "Odense", "Southern Denmark", "Denmark", "DK", "DKK", 55.4038, 10.4024),
+    abroad("rio", "Rio de Janeiro", "Rio de Janeiro", "Brazil", "BR", "BRL", -22.9068, -43.1729),
+    abroad("sao-paulo", "São Paulo", "São Paulo", "Brazil", "BR", "BRL", -23.5558, -46.6396),
+    abroad("brasilia", "Brasília", "Federal District", "Brazil", "BR", "BRL", -15.7975, -47.8919),
+    abroad("singapore", "Singapore", "Singapore", "Singapore", "SG", "SGD", 1.3521, 103.8198),
+    abroad("hanoi", "Hanoi", "Hanoi", "Vietnam", "VN", "VND", 21.0278, 105.8342),
+    abroad("ho-chi-minh-city", "Ho Chi Minh City", "Ho Chi Minh City", "Vietnam", "VN", "VND", 10.8231, 106.6297),
+    abroad("da-nang", "Da Nang", "Da Nang", "Vietnam", "VN", "VND", 16.0544, 108.2022),
+    abroad("abu-dhabi", "Abu Dhabi", "Abu Dhabi", "United Arab Emirates", "AE", "AED", 24.4539, 54.3773)
   ];
 
   root.TRAVEL_TIPPER_DATA = { updated: "2026-10-17", norms: norms, places: places };

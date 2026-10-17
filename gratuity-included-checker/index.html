@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gratuity Included Checker – Service Charge vs Tip | TipSlice</title>
+  <meta name="description" content="Enter a subtotal and an automatic gratuity or service-charge line. See whether that line is a tip, and what extra reaches a target percent.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://tipslice.com/gratuity-included-checker/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipslice.com/gratuity-included-checker/">
+  <meta property="og:title" content="Gratuity Included Checker | TipSlice">
+  <meta property="og:description" content="A required service charge is not a tip. See the extra that reaches the percent you wanted.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/styles.css?v=20261017e">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Gratuity Included Checker","url":"https://tipslice.com/gratuity-included-checker/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is an automatic gratuity a tip?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not when the customer has to pay it. The IRS tip recordkeeping page says service charges added to a bill by the employer, including a mandatory 18% charge for large parties, are not tips. A payment is a tip only if the customer voluntarily decides to pay it and determines the amount. Publication 531 uses the same 18% large-party example and says that charge is wages, not a tip diary entry." }
+      },
+      {
+        "@type": "Question",
+        "name": "What extra reaches my target percent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The page takes your target percent of the subtotal and subtracts the service-charge line already on the bill. If the line is smaller, the difference is the extra on top. If you marked the line as required, that extra is the amount that would be a tip if the guest chooses to add it. The required line itself stays a service charge." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the bill only suggests 15, 18, and 20 percent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The IRS tip recordkeeping page says suggested tip calculations are not service charges when the customer may choose any amount or leave the line blank. Uncheck the required box for that bill. The amount the guest writes is then treated as a tip." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#subtotal">Skip to gratuity checker</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/"><img src="/favicon.svg" alt="" width="28" height="28"><span>Tip<strong>Slice</strong></span></a>
+      </span>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <h1>Gratuity included checker</h1>
+    <p class="lede">Enter the subtotal and the service-charge or automatic-gratuity line. The page says whether that line is a tip, and what extra reaches a target percent.</p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <p class="guide-jump">Large-party bills are covered in <a href="/guides/large-parties/">large parties and automatic gratuity</a>. A normal tip with no service charge belongs on the <a href="/">tip calculator</a>.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Gratuity checker</h2>
+      <form id="grat-form" class="card" novalidate>
+        <div class="field">
+          <label for="subtotal">Subtotal, before the service line</label>
+          <input id="subtotal" type="text" inputmode="decimal" placeholder="240.00" autocomplete="off">
+        </div>
+        <fieldset>
+          <legend class="visually-hidden">How the service line is written</legend>
+          <div class="mode-tabs" role="radiogroup" aria-label="How the service line is written">
+            <label class="chip"><input type="radio" name="unit" value="percent" checked><span>Line is a percent</span></label>
+            <label class="chip"><input type="radio" name="unit" value="amount"><span>Line is a dollar amount</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="charge">Service charge or auto-gratuity</label>
+          <input id="charge" type="text" inputmode="decimal" placeholder="18" autocomplete="off">
+        </div>
+        <label class="check" for="required">
+          <input type="checkbox" id="required" checked>
+          This line is required. The guest cannot remove it.
+        </label>
+        <div class="field">
+          <label for="target">Target percent of the subtotal</label>
+          <input id="target" type="text" inputmode="decimal" value="20" autocomplete="off">
+        </div>
+        <p class="error" id="form-error" role="alert" hidden></p>
+        <p class="actions single"><button type="submit" class="btn btn-primary">Check</button></p>
+      </form>
+      <section class="card results" id="results" aria-live="polite">
+        <h2>On the bill</h2>
+        <dl class="breakdown">
+          <div><dt>Subtotal</dt><dd id="out-sub">—</dd></div>
+          <div><dt>Service line</dt><dd id="out-charge">—</dd></div>
+          <div><dt>Target amount</dt><dd id="out-target">—</dd></div>
+        </dl>
+        <p id="out-status" class="hint"></p>
+        <p id="out-extra" class="hint"></p>
+        <p class="hint">Share link: <a id="share-link" href="https://tipslice.com/gratuity-included-checker/">/gratuity-included-checker/</a></p>
+        <button type="button" class="btn btn-secondary" id="copy-btn">Copy link</button>
+        <p id="copy-status" class="share-status" role="status"></p>
+      </section>
+    </section>
+
+    <article class="content">
+      <h2>A required line is not a tip</h2>
+      <p>The IRS page <a href="https://www.irs.gov/businesses/small-businesses-self-employed/tip-recordkeeping-and-reporting">Tip recordkeeping and reporting</a> says service charges added to a bill by the employer and distributed to an employee are not tips. The employer treats them as wages and includes them on Form W-2. The same page says a payment is a tip only if the customer voluntarily decides to pay it and determines the amount. Its examples of service charges include an automatic charge added to a bill, such as a mandatory 18% charge for large parties. If the restaurant adds that 18% and the customer voluntarily adds something more, only the additional voluntary amount is a tip.</p>
+      <p><a href="https://www.irs.gov/publications/p531">Publication 531</a> says the same thing from the worker's side. Do not write a service charge in a tip diary when the employer adds it to the bill, pays it to you, and treats it as wages. Example 1 is an 18% charge for parties of six or more. The guest's bill includes that 18% on the tip line and in the total. Because the guest did not have an unrestricted right to determine the amount, the 18% is a service charge. It is wages, not a tip. Example 2 is the opposite: sample calculations of 15%, 18%, and 20% under a blank tip line. Because the guest can enter any amount or leave it blank, whatever they add is a tip.</p>
+      <p>The checkbox on this page is how you tell those two bills apart. Leave it checked when the menu or the check requires the line. The status then says a tip is not included. Uncheck it when the guest could have changed the amount or left it blank. The status then treats the line as a tip already chosen. The dollar math is the same either way: target percent of the subtotal, minus the line already printed. The label is what changes, because the IRS distinction is about whether the guest had to pay it.</p>
+      <p>A large-party example: subtotal $240, a required 18% line, target 20%. The required line is $43.20. Twenty percent of $240 is $48.00. The extra that brings the add-on up to 20% is $4.80. If the guest chooses to add that $4.80, the IRS pages above treat the $43.20 as a service charge and the $4.80 as a tip. Open the example: <a href="https://tipslice.com/gratuity-included-checker/?b=240&amp;c=18&amp;u=percent&amp;r=1&amp;t=20">/gratuity-included-checker/?b=240&amp;c=18&amp;u=percent&amp;r=1&amp;t=20</a>. The story of paying the 18% twice is in <a href="/guides/large-parties/">large parties</a>. A server splitting the tips that were actually tips uses the <a href="/tip-out-calculator/">tip-out calculator</a>.</p>
+      <h2>Gratuity checker FAQ</h2>
+      <h3>Is an automatic gratuity a tip?</h3>
+      <p>Not when the customer has to pay it. The IRS tip recordkeeping page says service charges added to a bill by the employer, including a mandatory 18% charge for large parties, are not tips. A payment is a tip only if the customer voluntarily decides to pay it and determines the amount. Publication 531 uses the same 18% large-party example and says that charge is wages, not a tip diary entry.</p>
+      <h3>What extra reaches my target percent?</h3>
+      <p>The page takes your target percent of the subtotal and subtracts the service-charge line already on the bill. If the line is smaller, the difference is the extra on top. If you marked the line as required, that extra is the amount that would be a tip if the guest chooses to add it. The required line itself stays a service charge.</p>
+      <h3>What if the bill only suggests 15, 18, and 20 percent?</h3>
+      <p>The IRS tip recordkeeping page says suggested tip calculations are not service charges when the customer may choose any amount or leave the line blank. Uncheck the required box for that bill. The amount the guest writes is then treated as a tip.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/currency-converter/">Currency</a>
+        <a href="/travel-tipper/">Travel tipper</a>
+        <a href="/tip-out-calculator/">Tip-out</a>
+        <a href="/hourly-wage-with-tips/">Hourly wage</a>
+        <a href="/gratuity-included-checker/" aria-current="page">Service charge</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+  <script src="/ads.js" defer></script>
+  <script src="/gratuity-included-checker/gratuity.js?v=20261017" defer></script>
+</body>
+</html>

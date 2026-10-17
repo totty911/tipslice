@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hourly Wage with Tips – Effective Rate | TipSlice</title>
+  <meta name="description" content="Add a cash wage, hours, and tips to see the effective hourly rate. Federal tipped cash wage and tip credit are quoted from the Department of Labor table.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://tipslice.com/hourly-wage-with-tips/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipslice.com/hourly-wage-with-tips/">
+  <meta property="og:title" content="Hourly Wage with Tips | TipSlice">
+  <meta property="og:description" content="Cash pay plus tips, divided by hours. The federal tipped figures are the ones on the Labor Department table.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/styles.css?v=20261017e">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Hourly Wage with Tips","url":"https://tipslice.com/hourly-wage-with-tips/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What federal tipped cash wage and tip credit does this page use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Department of Labor table Minimum Wages for Tipped Employees, dated July 1, 2026, lists the federal Fair Labor Standards Act row as a basic combined cash and tip minimum of $7.25, a maximum tip credit of $5.12, and a minimum cash wage of $2.13. The same row defines a tipped employee as someone who receives more than $30 a month in tips. This calculator does not apply those figures for you. It divides the wage and tips you type by the hours you type." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does every state use the $2.13 cash wage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The same July 1, 2026 table has a section for states that require employers to pay tipped employees the full state minimum wage before tips, and another section for states that require a cash wage above $2.13. Those state amounts are on the table, not in this paragraph. If a paycheck question is real, use the table or the state labor office the Department of Labor points to." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does effective hourly rate mean here?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It is the cash pay for the hours you entered, plus the tips you entered, divided by those hours. It is not a promise of what an employer must pay, and it does not subtract taxes." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#wage">Skip to hourly calculator</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/"><img src="/favicon.svg" alt="" width="28" height="28"><span>Tip<strong>Slice</strong></span></a>
+      </span>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <h1>Hourly wage with tips</h1>
+    <p class="lede">Add the cash wage, the hours, and the tips. The page divides the total by the hours and shows the effective rate.</p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <p class="guide-jump">The wage rules for a pool are in <a href="/guides/tip-pooling/">tip-out and tip pooling</a>. The handoff math is the <a href="/tip-out-calculator/">tip-out calculator</a>.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Hourly wage with tips</h2>
+      <form id="hourly-form" class="card" novalidate>
+        <div class="field">
+          <label for="wage">Cash wage per hour</label>
+          <input id="wage" type="text" inputmode="decimal" placeholder="2.13" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="hours">Hours</label>
+          <input id="hours" type="text" inputmode="decimal" placeholder="40" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="tips">Tips in that period</label>
+          <input id="tips" type="text" inputmode="decimal" placeholder="400.00" autocomplete="off">
+        </div>
+        <p class="error" id="form-error" role="alert" hidden></p>
+        <p class="actions single"><button type="submit" class="btn btn-primary">Calculate</button></p>
+      </form>
+      <section class="card results" id="results" aria-live="polite">
+        <h2>Rate</h2>
+        <dl class="breakdown">
+          <div><dt>Cash pay</dt><dd id="out-base">—</dd></div>
+          <div><dt>Tips</dt><dd id="out-tips">—</dd></div>
+          <div><dt>Cash pay plus tips</dt><dd id="out-gross">—</dd></div>
+          <div class="grand"><dt>Effective hourly rate</dt><dd id="out-rate">—</dd></div>
+        </dl>
+        <p id="out-note" class="hint"></p>
+        <p class="hint">Share link: <a id="share-link" href="https://tipslice.com/hourly-wage-with-tips/">/hourly-wage-with-tips/</a></p>
+        <button type="button" class="btn btn-secondary" id="copy-btn">Copy link</button>
+        <p id="copy-status" class="share-status" role="status"></p>
+      </section>
+    </section>
+
+    <article class="content">
+      <h2>The federal row, as the table prints it</h2>
+      <p>The Department of Labor page <a href="https://www.dol.gov/agencies/whd/state/minimum-wage/tipped">Minimum Wages for Tipped Employees</a> is dated July 1, 2026, and the page says it was last revised that day. Its federal Fair Labor Standards Act row lists a basic combined cash and tip minimum wage of $7.25, a maximum tip credit against the minimum wage of $5.12, and a minimum cash wage of $2.13. The same row says a tipped employee, for that federal definition, is someone who receives more than $30 a month in tips. Those three dollar figures are the federal row. This calculator does not look up your state and does not decide whether those numbers apply to a particular job.</p>
+      <p>The same table splits the states. One block is states that require employers to pay tipped employees the full state minimum wage before tips. Another is states that require a cash wage above the federal $2.13. A third lists places where the state minimum cash wage matches the federal $2.13. The amounts in those blocks are on the Labor Department page. TipSlice is not retyping the state grid here, because a copied grid goes stale the next time the Department revises the table. If the number matters to a paycheck, open the table, then the state labor office the Department tells readers to consult.</p>
+      <h2>What the boxes do</h2>
+      <p>Cash pay is the hourly wage you type, times the hours, rounded to the cent. Tips are the amount you type for that same period. The effective hourly rate is those two added together, divided by the hours, then rounded to the cent. Taxes are not taken out. A tip-out you already handed to a busser is not subtracted unless you leave it out of the tips box yourself. The <a href="/tip-out-calculator/">tip-out calculator</a> is the place to see that handoff before you type the tips that stayed with you.</p>
+      <p>A worked example uses the federal cash wage from the table and numbers that are not a real shift. At $2.13 an hour for 40 hours, cash pay is $85.20. Add $400 in tips and the total is $485.20. Divide by 40 and the effective rate is $12.13. Open it: <a href="https://tipslice.com/hourly-wage-with-tips/?w=2.13&amp;h=40&amp;t=400">/hourly-wage-with-tips/?w=2.13&amp;h=40&amp;t=400</a>. The $12.13 is arithmetic. It is not a finding that the employer met the $7.25 combined federal minimum, and it is not a finding that $2.13 was the lawful cash wage in that state. Several states on the July 1, 2026 table require the full state minimum before tips.</p>
+      <p>Related pages: <a href="/guides/tip-pooling/">tip-out and tip pooling</a> for the pool rules, and <a href="/guides/restaurant-tipping/">restaurant tipping</a> for the guest-facing percent.</p>
+      <h2>Hourly wage FAQ</h2>
+      <h3>What federal tipped cash wage and tip credit does this page use?</h3>
+      <p>The Department of Labor table Minimum Wages for Tipped Employees, dated July 1, 2026, lists the federal Fair Labor Standards Act row as a basic combined cash and tip minimum of $7.25, a maximum tip credit of $5.12, and a minimum cash wage of $2.13. The same row defines a tipped employee as someone who receives more than $30 a month in tips. This calculator does not apply those figures for you. It divides the wage and tips you type by the hours you type.</p>
+      <h3>Does every state use the $2.13 cash wage?</h3>
+      <p>No. The same July 1, 2026 table has a section for states that require employers to pay tipped employees the full state minimum wage before tips, and another section for states that require a cash wage above $2.13. Those state amounts are on the table, not in this paragraph. If a paycheck question is real, use the table or the state labor office the Department of Labor points to.</p>
+      <h3>What does effective hourly rate mean here?</h3>
+      <p>It is the cash pay for the hours you entered, plus the tips you entered, divided by those hours. It is not a promise of what an employer must pay, and it does not subtract taxes.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/currency-converter/">Currency</a>
+        <a href="/travel-tipper/">Travel tipper</a>
+        <a href="/tip-out-calculator/">Tip-out</a>
+        <a href="/hourly-wage-with-tips/" aria-current="page">Hourly wage</a>
+        <a href="/gratuity-included-checker/">Service charge</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+  <script src="/ads.js" defer></script>
+  <script src="/hourly-wage-with-tips/hourly.js?v=20261017" defer></script>
+</body>
+</html>

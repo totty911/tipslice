@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tip-Out Calculator – Busser, Bartender, and Host Shares | TipSlice</title>
+  <meta name="description" content="Split a server's tip-out to a busser, bartender, and host by a percent of sales or a percent of tips, then see what is left.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="canonical" href="https://tipslice.com/tip-out-calculator/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipslice.com/tip-out-calculator/">
+  <meta property="og:title" content="Tip-Out Calculator | TipSlice">
+  <meta property="og:description" content="Enter the house percents. See each share and the net left from the tips you collected.">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/styles.css?v=20261017e">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Tip-Out Calculator","url":"https://tipslice.com/tip-out-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this page set a standard tip-out percent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The busser, bartender, and host percents are the numbers you type. Federal law does not publish one required tip-out percentage. The tip-pooling guide explains who may be in a pool and labels its dollar example as a house policy, not a legal standard." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should the percent apply to sales or to tips?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the base your workplace actually uses. A percent of sales is a share of the food and drink you sold. A percent of tips is a share of the tips you collected. The same 3% is a different dollar amount on those two bases. The result names which base it used." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the tip-out is larger than my tips?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The net goes negative and the page says the tip-out is larger than the tips you entered. Check whether the percents were meant to come out of sales or out of tips. This worksheet does not say the house may take that much." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#sales">Skip to tip-out calculator</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand" aria-label="TipSlice">
+        <a href="/"><img src="/favicon.svg" alt="" width="28" height="28"><span>Tip<strong>Slice</strong></span></a>
+      </span>
+    </div>
+  </header>
+  <main class="wrap" id="main">
+    <h1>Tip-out calculator</h1>
+    <p class="lede">Enter sales, the tips you collected, and the percent for a busser, a bartender, and a host. The page shows each share and what is left.</p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <p class="guide-jump">Who can be in a pool is the <a href="/guides/tip-pooling/">tip-out and tip pooling</a> guide. A guest-facing automatic gratuity is the <a href="/gratuity-included-checker/">service-charge checker</a>.</p>
+
+    <section class="tool" aria-labelledby="tool-heading">
+      <h2 id="tool-heading" class="visually-hidden">Tip-out calculator</h2>
+      <form id="tipout-form" class="card" novalidate>
+        <fieldset>
+          <legend class="visually-hidden">Tip-out base</legend>
+          <div class="mode-tabs" role="radiogroup" aria-label="Tip-out base">
+            <label class="chip"><input type="radio" name="mode" value="sales" checked><span>% of sales</span></label>
+            <label class="chip"><input type="radio" name="mode" value="tips"><span>% of tips</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="sales">Sales</label>
+          <input id="sales" type="text" inputmode="decimal" placeholder="100.00" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="tips">Tips you collected</label>
+          <input id="tips" type="text" inputmode="decimal" placeholder="20.00" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="busser">Busser percent</label>
+          <input id="busser" type="text" inputmode="decimal" value="0" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="bartender">Bartender percent</label>
+          <input id="bartender" type="text" inputmode="decimal" value="0" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="host">Host percent</label>
+          <input id="host" type="text" inputmode="decimal" value="0" autocomplete="off">
+        </div>
+        <p class="error" id="form-error" role="alert" hidden></p>
+        <p class="actions single"><button type="submit" class="btn btn-primary">Calculate</button></p>
+      </form>
+      <section class="card results" id="results" aria-live="polite">
+        <h2>Shares</h2>
+        <dl class="breakdown">
+          <div><dt id="out-base-label">Tip-out base (sales)</dt><dd id="out-base">—</dd></div>
+          <div><dt>Busser</dt><dd id="out-busser">—</dd></div>
+          <div><dt>Bartender</dt><dd id="out-bartender">—</dd></div>
+          <div><dt>Host</dt><dd id="out-host">—</dd></div>
+          <div><dt>Tip-out total</dt><dd id="out-total">—</dd></div>
+          <div><dt>Tips collected</dt><dd id="out-tips">—</dd></div>
+          <div class="grand"><dt>Net left</dt><dd id="out-net">—</dd></div>
+        </dl>
+        <p id="out-note" class="hint"></p>
+        <p class="hint">Share link: <a id="share-link" href="https://tipslice.com/tip-out-calculator/">/tip-out-calculator/</a></p>
+        <button type="button" class="btn btn-secondary" id="copy-btn">Copy link</button>
+        <p id="copy-status" class="share-status" role="status"></p>
+      </section>
+    </section>
+
+    <article class="content">
+      <h2>What you are dividing</h2>
+      <p>A tip-out is the part of a shift a server turns over to other people who worked the same checks. Houses write that handoff two different ways. One is a percent of sales: 3% of the food and drink you sold, whether the guest tipped well or poorly. The other is a percent of the tips you actually collected. This page does both. The radio at the top picks the base, and the result repeats which base it used.</p>
+      <p>Type the three percents your workplace uses. Zero is a real entry. If the host is not in the tip-out, leave that box at 0. The busser share, the bartender share, and the host share are each rounded to the cent, then added. Net is the tips you typed minus that sum. It can be negative. A negative net means the percents, on the base you picked, ask for more money than the tips line. That is a signal to recheck the base, not a verdict that the house may collect the difference from your wages.</p>
+      <p>Here is a filled example, and it is only an example. Sales $100, tips collected $20, busser 3% of sales, bartender 1% of sales, host 0. The busser share is $3.00, the bartender share is $1.00, and the net is $16.00. The same 3% and 1% applied to tips instead of sales would be $0.60 and $0.20, and the net would be $19.20. Open the sales version: <a href="https://tipslice.com/tip-out-calculator/?s=100&amp;i=20&amp;m=sales&amp;bu=3&amp;ba=1&amp;ho=0">/tip-out-calculator/?s=100&amp;i=20&amp;m=sales&amp;bu=3&amp;ba=1&amp;ho=0</a>.</p>
+      <p>Nothing on this page is a required percentage. The <a href="/guides/tip-pooling/">tip-pooling guide</a> is where TipSlice walks through who federal law allows in a pool, and it labels its own dollar story as a house policy. If your question is the cash wage under a tip credit, use the <a href="/hourly-wage-with-tips/">hourly wage with tips</a> page and the Department of Labor table it cites. If the guest's bill already has an automatic gratuity, that line is a different problem, and the <a href="/gratuity-included-checker/">service-charge checker</a> is the tool for it.</p>
+      <h2>Tip-out FAQ</h2>
+      <h3>Does this page set a standard tip-out percent?</h3>
+      <p>No. The busser, bartender, and host percents are the numbers you type. Federal law does not publish one required tip-out percentage. The tip-pooling guide explains who may be in a pool and labels its dollar example as a house policy, not a legal standard.</p>
+      <h3>Should the percent apply to sales or to tips?</h3>
+      <p>Use the base your workplace actually uses. A percent of sales is a share of the food and drink you sold. A percent of tips is a share of the tips you collected. The same 3% is a different dollar amount on those two bases. The result names which base it used.</p>
+      <h3>What if the tip-out is larger than my tips?</h3>
+      <p>The net goes negative and the page says the tip-out is larger than the tips you entered. Check whether the percents were meant to come out of sales or out of tips. This worksheet does not say the house may take that much.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/">Tip calculator</a>
+        <a href="/split-bill.html">Split a bill</a>
+        <a href="/tip-percentage.html">Tip percentages</a>
+        <a href="/sales-tax-calculator.html">Sales tax</a>
+        <a href="/currency-converter/">Currency</a>
+        <a href="/travel-tipper/">Travel tipper</a>
+        <a href="/tip-out-calculator/" aria-current="page">Tip-out</a>
+        <a href="/hourly-wage-with-tips/">Hourly wage</a>
+        <a href="/gratuity-included-checker/">Service charge</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+      <p>&copy; <span id="year">2026</span> TipSlice. Calculations are estimates for convenience; always check your receipt.</p>
+    </div>
+  </footer>
+  <script src="/ads.js" defer></script>
+  <script src="/tip-out-calculator/tip-out.js?v=20261017" defer></script>
+</body>
+</html>
