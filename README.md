@@ -10,6 +10,16 @@ Do not depend on a box/agent local server. Redeploy static files to surge (or an
 | URL | File | Purpose |
 | --- | --- | --- |
 | `/` | `index.html` | Main tip calculator + FAQ |
+| `/guides/` | `guides/index.html` | Hub for the tipping guides |
+| `/guides/restaurant-tipping/` | `guides/restaurant-tipping/index.html` | Sit-down, counter, and takeout |
+| `/guides/delivery-drivers/` | `guides/delivery-drivers/index.html` | Delivery tips and fee lines |
+| `/guides/salons-barbers-spas/` | `guides/salons-barbers-spas/index.html` | Salon, barber, and spa tipping |
+| `/guides/pre-tax-vs-post-tax/` | `guides/pre-tax-vs-post-tax/index.html` | Pre-tax vs after-tax tip base |
+| `/guides/split-a-bill/` | `guides/split-a-bill/index.html` | Even vs itemized splits |
+| `/guides/tipping-when-traveling/` | `guides/tipping-when-traveling/index.html` | U.S. tipping vs other countries |
+| `/guides/large-parties/` | `guides/large-parties/index.html` | Automatic gratuity |
+| `/guides/tip-pooling/` | `guides/tip-pooling/index.html` | Tip-out and tip pools |
+| `/guides/tipping-by-service/` | `guides/tipping-by-service/index.html` | Quick-reference table |
 | `/split-bill.html` | `split-bill.html` | Even bill splitter with tip/tax |
 | `/tip-percentage.html` | `tip-percentage.html` | Compare tip % amounts + guide |
 | `/sales-tax-calculator.html` | `sales-tax-calculator.html` | Add tax or reverse tax-inclusive totals |
