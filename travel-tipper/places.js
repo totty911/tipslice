@@ -89,9 +89,11 @@
       label: "Not customary",
       percent: 0,
       setsTip: true,
-      text: "A tip is not required or expected. The Korea Tourism Organization says tipping is not required or expected in Korea, and that asking for more water or side dishes does not add a charge. Seoul, Busan, and Incheon are set to 0%. You can change the percent if you still want to leave something.",
+      text: "A tip is not required or expected. VisitKorea says tipping is not required or expected in Korea, and that extra water or side dishes do not add a charge. A later food page says there is no need to tip. The taxi page says most taxis charge by the meter and do not require a tip, and that passengers can pay with cash, a credit card, or a transportation card. Seoul, Busan, and Incheon are set to 0%. You can change the percent if you still want to leave something.",
       sources: [
-        { name: "Korea Tourism Organization, about Korean food", url: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140727" }
+        { name: "VisitKorea, about Korean food", url: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140727" },
+        { name: "VisitKorea, about Korean food (July 25, 2025)", url: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=229195" },
+        { name: "VisitKorea, taxi", url: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140661" }
       ]
     },
     IT: {
@@ -141,9 +143,11 @@
       label: "Expected",
       percent: 10,
       setsTip: true,
-      text: "A tip is a common practice, and it is not mandatory. Mexico's tourism secretariat says it is common to tip 10% to 15% in restaurants, and that small tips are appreciated for hotel housekeeping and tour guides. Mexico City, Guadalajara, and Cancún start at 10%, the low end of that range. You can change it.",
+      text: "A tip is common and not mandatory on the tourism secretariat FAQ, which says 10% to 15% is common in restaurants and that small tips are appreciated for hotel housekeeping and tour guides. VisitMexico says 10% to 15% is customary for meals or drinks in restaurants, bars, and street stands, and that a few coins are usual for porters, cab drivers, and cleaning staff. Profeco says a tip is voluntary and cannot be added to the bill without consent. Mexico City, Guadalajara, and Cancún start at 10%, the low end of that range. You can change it.",
       sources: [
-        { name: "Mexico Ministry of Tourism, visitor FAQ", url: "https://www.mexico-invita.sectur.gob.mx/en/useful-services/faq" }
+        { name: "Mexico Ministry of Tourism, visitor FAQ", url: "https://www.mexico-invita.sectur.gob.mx/en/useful-services/faq" },
+        { name: "VisitMexico, frequently asked questions", url: "https://visitmexico.com/en/pagina/preguntas-frecuentes" },
+        { name: "Profeco, voluntary tip (20 May 2026)", url: "https://mundialsocial.profeco.gob.mx/blog/propina-voluntaria/" }
       ]
     },
     DK: {
