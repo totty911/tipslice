@@ -168,7 +168,10 @@
       JP: ['/guides/tipping-in-japan/', 'Japan guide'],
       IT: ['/guides/tipping-in-italy/', 'Italy guide'],
       MX: ['/guides/tipping-in-mexico/', 'Mexico guide'],
-      KR: ['/guides/tipping-in-south-korea/', 'South Korea guide']
+      KR: ['/guides/tipping-in-south-korea/', 'South Korea guide'],
+      GB: ['/guides/tipping-in-the-uk/', 'UK guide'],
+      ES: ['/guides/tipping-in-spain/', 'Spain guide'],
+      FR: ['/guides/tipping-in-france/', 'France guide']
     };
 
     function countryGuideParagraph() {

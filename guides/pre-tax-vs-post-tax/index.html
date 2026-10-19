@@ -31,7 +31,7 @@
     "headline": "Tipping on the pre-tax or post-tax total",
     "description": "Why etiquette uses the pre-tax bill, what the difference costs on a real tax rate, and how to switch the TipSlice calculator.",
     "datePublished": "2026-10-17",
-    "dateModified": "2026-10-17",
+    "dateModified": "2026-10-19",
     "author": { "@type": "Person", "name": "Matt Totty", "url": "https://tipslice.com/about.html" },
     "publisher": { "@type": "Organization", "name": "TipSlice", "url": "https://tipslice.com/" },
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tipslice.com/guides/pre-tax-vs-post-tax/" }
@@ -90,7 +90,7 @@
       </ol>
     </nav>
     <h1>Tipping on the pre-tax or post-tax total</h1>
-    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last reviewed <time datetime="2026-10-19">October 19, 2026</time></p>
     <article class="content">
       <p>Sales tax is not a tip, and it is not payment for service. The traditional U.S. habit is to figure the tip on the food-and-drink subtotal, before tax. Tipping on the after-tax total is a bit more money and a bit less arithmetic, which is why card machines and tired tables do it. Both are understandable. They are not the same number. This page uses a published city tax rate so you can see the gap in dollars, then shows the TipSlice switch that calculates either way.</p>
 
@@ -107,7 +107,7 @@
       </nav>
 
       <h2 id="etiquette">What etiquette says</h2>
-      <p>The <a href="https://emilypost.com/advice/general-tipping-guide">Emily Post Institute chart</a> states the sit-down range as 15% to 20%, pre-tax. The Institute's <a href="https://emilypost.com/advice/finer-points-of-tipping">finer points</a> say it directly: it is acceptable to tip on the pre-tax amount of the bill, and for a large party the gap versus the final total can be substantial. Tax did not buy you more service. The server did not set the rate, and the restaurant sends the tax to the state and local government. Leaving a percentage of the tax on top is a gift, not the standard the chart describes.</p>
+      <p>The <a href="https://emilypost.com/advice/general-tipping-guide">Emily Post Institute chart</a> states the sit-down range as 15% to 20%, pre-tax. The Institute's <a href="https://emilypost.com/advice/finer-points-of-tipping">finer points</a> say it is acceptable to tip on the pre-tax amount of the bill, and that for large parties this can be quite different than the total. The two methods are not the same number. The tables below use published city rates so the gap is in dollars.</p>
       <p>That standard is etiquette, not a statute. If the table prefers the after-tax number because it is the only figure on the receipt, use it and say so. The mistake is assuming the two methods match.</p>
 
       <h2 id="math">The dollars on an $80 check</h2>
@@ -126,7 +126,23 @@
         </table>
       </div>
       <p>Each person's gap on this check is $0.71. On a $240 party check at the same 8.875% rate, tax is $21.30, 20% before tax is $48.00, and 20% after tax is $52.26. The gap is $4.26.</p>
-      <p>The extra tip from using the after-tax total equals your tip percentage times the tax dollars. At 15% on this check the gap is $1.07. At 18% it is $1.28.</p>
+      <p>The extra tip from using the after-tax total equals your tip percentage times the tax dollars. At 15% on this New York check the gap is $1.07. At 18% it is $1.28.</p>
+      <p>The same $80 meal at 20% changes with the combined rate already stored in Travel Tipper. These three rates are copied from that file, not estimated.</p>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <caption>20% tip on an $80 meal at combined rates from Travel Tipper's source notes</caption>
+          <thead>
+            <tr><th>City</th><th>Combined rate</th><th>Tax</th><th>Pre-tax tip</th><th>Post-tax tip</th><th>Extra tip</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>New York City</td><td>8.875%</td><td>$7.10</td><td>$16.00</td><td>$17.42</td><td>$1.42</td></tr>
+            <tr><td>Seattle</td><td>10.55%</td><td>$8.44</td><td>$16.00</td><td>$17.69</td><td>$1.69</td></tr>
+            <tr><td>Houston</td><td>8.25%</td><td>$6.60</td><td>$16.00</td><td>$17.32</td><td>$1.32</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>New York City is 8.875% in <a href="https://www.tax.ny.gov/pdf/publications/sales/pub718.pdf">Publication 718</a> (reporting code 8081), effective March 1, 2025, including the Metropolitan Commuter Transportation District portion. Seattle is location code 1726 on the <a href="https://dor.wa.gov/sites/default/files/2026-08/Q426_LSU-flyer-by-county.pdf">Washington Department of Revenue flyer</a> for October 1 through December 31, 2026: local 4.05% plus state 6.50%. Houston's city rows, including Harris County, are 8.25% on the <a href="https://comptroller.texas.gov/taxes/sales/city.php">Texas Comptroller city table</a> checked October 17, 2026. A different address in the same county can be a different row. The receipt still wins.</p>
+      <p>Seattle's post-tax tip is 20% of $88.44, which is $17.688 and rounds to $17.69. The pre-tax tip stays $16.00, so the gap is $1.69. Houston's tax on $80 is $6.60, and 20% of $86.60 is $17.32, so the gap is $1.32. Open the Seattle pair in the calculator: <a href="https://tipslice.com/?b=80&amp;p=2&amp;t=20&amp;x=10.55">pre-tax</a> and <a href="https://tipslice.com/?b=80&amp;p=2&amp;t=20&amp;x=10.55&amp;o=1">post-tax</a>.</p>
 
       <h2 id="rates">Where the tax rate comes from</h2>
       <p>U.S. sales tax is a stack of state, city, and special-district rates, and restaurants in two neighborhoods can differ. Do not memorize a national number. Use the rate printed on that receipt.</p>
@@ -175,6 +191,8 @@
         <li><a href="https://emilypost.com/advice/finer-points-of-tipping">Emily Post Institute, Finer Points of Tipping</a> — tipping on the pre-tax amount, and why large checks widen the gap.</li>
         <li><a href="https://www.tax.ny.gov/bus/st/rates.htm">New York State Department of Taxation and Finance, sales tax rates</a> — local combined rates, including New York City at 8.875%.</li>
         <li><a href="https://www.cdtfa.ca.gov/taxes-and-fees/sales-use-tax-rates.htm">California Department of Tax and Fee Administration, sales and use tax rates</a> — the 7.25% statewide base and local district taxes.</li>
+        <li><a href="https://dor.wa.gov/sites/default/files/2026-08/Q426_LSU-flyer-by-county.pdf">Washington Department of Revenue, Quarter 4 2026 local sales and use tax flyer</a> — Seattle location code 1726 at 10.55%.</li>
+        <li><a href="https://comptroller.texas.gov/taxes/sales/city.php">Texas Comptroller, city sales and use tax</a> — Houston at 8.25% on the table checked October 17, 2026.</li>
       </ul>
 
       <h2>More from TipSlice</h2>
