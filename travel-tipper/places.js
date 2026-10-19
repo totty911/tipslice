@@ -53,9 +53,10 @@
       label: "Service usually included",
       percent: 0,
       setsTip: true,
-      text: "Check the bill for a service charge before you add a tip. The German National Tourist Board's 2026 advisor guide says service is generally included in restaurant prices. If the bill has no such charge and you want to leave something extra, about 5% to 10% is customary. Berlin, Munich, and Hamburg start at 0% so a second percent is not stacked on included service. You can type 5 or 10 after you have read the bill.",
+      text: "Check the bill for a service charge before you add a tip. The German National Tourist Board's 2026 advisor guide says service is generally included in restaurant prices. If the bill has no such charge and you want to leave something extra, about 5% to 10% is customary. Berlin.de says a tip is voluntary and that 5% to 10% of a restaurant or cafe bill is appropriate. Berlin, Munich, and Hamburg start at 0% so a second percent is not stacked on included service. You can type 5 or 10 after you have read the bill.",
       sources: [
-        { name: "German National Tourist Board, 2026 resource guide (PDF)", url: "https://www.germany.travel/media/redaktion/trade_relaunch/news_services/Germany_Resource_Guide_For_Travel_Advisors_2026.pdf" }
+        { name: "German National Tourist Board, 2026 resource guide (PDF)", url: "https://www.germany.travel/media/redaktion/trade_relaunch/news_services/Germany_Resource_Guide_For_Travel_Advisors_2026.pdf" },
+        { name: "Berlin.de, Trinkgeld", url: "https://www.berlin.de/tourismus/infos/1758234-1721039-trinkgeld.html" }
       ]
     },
     JP: {
@@ -94,9 +95,11 @@
       label: "Optional",
       percent: 0,
       setsTip: true,
-      text: "Tipping is optional. Italia.it says tipping is not compulsory and there are no established rules, but it is customary to leave an amount close to 10% of the bill when you are satisfied with the service. Rome, Milan, and Florence start at 0%. Type a percent close to 10 if you are choosing to leave that.",
+      text: "Tipping is optional. Italia.it says tipping is not compulsory and there are no established rules, but it is customary to leave an amount close to 10% of the bill when you are satisfied with the service. The education ministry says a tip is welcome but not an obligation, and that most restaurants charge a fixed fee called coperto. Lazio law forbids an additional coperto charge. Rome, Milan, and Florence start at 0%. Type a percent close to 10 if you are choosing to leave that.",
       sources: [
-        { name: "Italia.it, money, payments, and tipping", url: "https://www.italia.it/en/italy/practical-information/money-payments-and-tipping-in-italy" }
+        { name: "Italia.it, money, payments, and tipping", url: "https://www.italia.it/en/italy/practical-information/money-payments-and-tipping-in-italy" },
+        { name: "Italian Ministry of Education, study in Italy", url: "https://miur.mur.gov.it/studiare-in-italia/living/free-time.html" },
+        { name: "Lazio Regional Law 22/2019, Article 75 (PDF)", url: "https://www.regione.lazio.it/sites/default/files/documentazione/SVI_Legge_Regionale_06_11_2019_n22_TESTO_UNICO_COMMERCIO.pdf" }
       ]
     },
     ES: {
