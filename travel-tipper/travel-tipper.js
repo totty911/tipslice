@@ -164,6 +164,25 @@
       });
     }
 
+    const COUNTRY_GUIDES = {
+      JP: ['/guides/tipping-in-japan/', 'Japan guide'],
+      IT: ['/guides/tipping-in-italy/', 'Italy guide'],
+      MX: ['/guides/tipping-in-mexico/', 'Mexico guide'],
+      KR: ['/guides/tipping-in-south-korea/', 'South Korea guide']
+    };
+
+    function countryGuideParagraph() {
+      if (!active || !COUNTRY_GUIDES[active.norm]) return null;
+      const guide = COUNTRY_GUIDES[active.norm];
+      const p = document.createElement('p');
+      p.className = 'norm-sources';
+      const a = document.createElement('a');
+      a.href = guide[0];
+      a.textContent = guide[1];
+      p.append(document.createTextNode('Longer note: '), a, document.createTextNode('.'));
+      return p;
+    }
+
     function renderPlaceNote() {
       normAlert.replaceChildren();
       normAlert.className = 'norm-alert';
@@ -196,6 +215,8 @@
       sources.append(document.createTextNode('Source: '));
       appendSources(sources, norm.sources);
       normAlert.append(title, sources);
+      const guide = countryGuideParagraph();
+      if (guide) normAlert.append(guide);
     }
 
     function writeSources(math) {
@@ -214,6 +235,8 @@
         wrap.append(document.createTextNode(norm.text + ' '));
         appendSources(wrap, norm.sources);
         bits.push(wrap);
+        const guide = countryGuideParagraph();
+        if (guide) bits.push(guide);
       }
       bits.forEach((node) => sourceBox.appendChild(node));
       if (math && math.homeText) {

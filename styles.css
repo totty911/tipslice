@@ -137,26 +137,25 @@ body {
 h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.15; margin: 20px 0 6px; letter-spacing: -0.02em; }
 .lede { margin: 0 0 18px; color: var(--muted); }
 
-/* Ad placeholders: deliberately muted, dashed, labeled, and spatially separate from controls */
-.ad-slot {
+/* No reserved ad boxes. Auto Ads place themselves. A future unit with class ad-live can show. */
+.ad-slot { display: none; }
+.ad-slot.ad-live {
   position: relative;
   display: flex; align-items: center; justify-content: center;
   margin: 16px auto;
-  background: var(--ad-bg);
-  border: 1px dashed var(--ad-border);
-  border-radius: 6px;
+  background: transparent;
+  border: 0;
   overflow: hidden;
 }
 .ad-label {
   position: absolute; top: 4px; left: 8px;
   font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--muted); opacity: .8; pointer-events: none;
+  color: #3f4750; pointer-events: none;
 }
-.ad-leaderboard { min-height: 100px; width: 100%; max-width: 728px; }
-.ad-rectangle { min-height: 280px; width: 100%; max-width: 336px; margin-top: 32px; margin-bottom: 32px; }
-@media (min-width: 768px) { .ad-leaderboard { min-height: 110px; } }
+@media (prefers-color-scheme: dark) {
+  .ad-label { color: #e5e7eb; }
+}
 .ad-slot ins { display: block; width: 100%; }
-.ad-slot.ad-live { background: transparent; border-style: solid; border-color: transparent; }
 
 /* Tool layout */
 .tool { display: grid; gap: 16px; }

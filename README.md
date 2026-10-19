@@ -79,10 +79,7 @@ Do **not** invent a publisher ID or submit the application from this box.
    const ADSENSE_CLIENT_ID = 'ca-pub-1234567890123456'; // real ID
    ```
    Client ID alone enables **Auto Ads** once Auto Ads is turned on in the AdSense UI.
-3. Optional display units: AdSense → **Ads → By ad unit → Display** → create two units → paste slot IDs:
-   ```js
-   const ADSENSE_SLOTS = { leaderboard: '1111111111', rectangle: '2222222222' };
-   ```
+3. Do not add empty display-ad boxes. Auto Ads do not need slot IDs, and blank slot IDs leave a reserved “Advertisement” gap. Add a manual unit only after AdSense gives you a real slot ID, and only render that unit when the ID is non-empty.
 4. **ads.txt:** replace the comment file with exactly one live line (Google shows this in the site setup UI):
    ```
    google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
@@ -93,7 +90,7 @@ Do **not** invent a publisher ID or submit the application from this box.
 ### C. Policy checklist already on the site
 - Privacy + Terms linked in the footer on every page
 - Client-side-only math disclosed
-- Ad placeholders labeled “Advertisement”, dashed, separated from Calculate/Reset CTAs
+- Ads come from Auto Ads. Pages do not reserve empty advertisement boxes
 - No fake download buttons
 - Original content on each tool page
 
