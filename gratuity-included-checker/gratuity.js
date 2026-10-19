@@ -36,6 +36,26 @@
     const chargeEl = $('charge');
     const targetEl = $('target');
     const requiredEl = $('required');
+    const lineEl = $('line-wording');
+    const LINES = {
+      auto: { required: true, text: 'IRS Revenue Ruling 2012-18 Example A treats an 18% charge for parties of 6 or more as a service charge, not a tip.' },
+      suggested: { required: false, text: 'Publication 531 Example 2: sample percentages under a blank line are a tip, because you can write any amount or nothing.' },
+      service: { required: true, text: 'Fact Sheet #15: a compulsory charge for service, for example 15 percent of the bill, is not a tip under the FLSA.' },
+      fee: { required: true, text: 'A mandatory fee is not a tip. California restaurants must display mandatory fees clearly and conspicuously wherever prices are shown (SB 478, as amended by SB 1524).' },
+      france: { required: true, text: 'DGCCRF: service is included in the displayed price. A pourboire is optional, and no profession can demand it.' },
+      uk: { required: false, text: 'VisitBritain: an optional service charge is sometimes added, and you can choose whether to pay it.' },
+      japan: { required: false, text: 'JNTO: tipping is not common at bars, cafes, restaurants, taxis, or hotels. The Japan guide has the envelope exception.' }
+    };
+    if (lineEl) {
+      lineEl.addEventListener('change', function () {
+        const item = LINES[lineEl.value];
+        const note = $('line-note');
+        if (!item) { if (note) note.textContent = ''; return; }
+        requiredEl.checked = item.required;
+        if (note) note.textContent = item.text;
+        calculate(true);
+      });
+    }
     const errorEl = $('form-error');
 
     function num(el) {

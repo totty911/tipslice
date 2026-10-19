@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gratuity Included Checker – Service Charge vs Tip | TipSlice</title>
+  <title>Is Gratuity Included? Check Your Bill and Service Charge vs Tip | TipSlice</title>
   <meta name="description" content="Enter a subtotal and an automatic gratuity or service-charge line. See whether that line is a tip, and what extra reaches a target percent.">
   <meta name="theme-color" content="#0f766e">
   <link rel="canonical" href="https://tipslice.com/gratuity-included-checker/">
@@ -13,7 +13,7 @@
   <meta property="og:title" content="Gratuity Included Checker | TipSlice">
   <meta property="og:description" content="A required service charge is not a tip. See the extra that reaches the percent you wanted.">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="/styles.css?v=20261019a">
+  <link rel="stylesheet" href="/styles.css?v=20261019b">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Gratuity Included Checker","url":"https://tipslice.com/gratuity-included-checker/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -75,9 +75,9 @@
     </div>
   </header>
   <main class="wrap" id="main">
-    <h1>Gratuity included checker</h1>
-    <p class="lede">Enter the subtotal and the service-charge or automatic-gratuity line. The page says whether that line is a tip, and what extra reaches a target percent.</p>
-    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last updated <time datetime="2026-10-17">October 17, 2026</time></p>
+    <h1>Is gratuity included?</h1>
+    <p class="lede">Look for a line labeled gratuity, auto-gratuity, or service charge that is already in the total. If it is mandatory, the IRS treats it as a service charge, not a tip. Anything you add on top is optional. A printed list of suggested percentages is not a charge.</p>
+    <p class="byline">By <a href="/about.html">Matt Totty</a>, TipSlice · Last reviewed <time datetime="2026-10-19">October 19, 2026</time></p>
     <p class="guide-jump">Large-party bills are covered in <a href="/guides/large-parties/">large parties and automatic gratuity</a>. A normal tip with no service charge belongs on the <a href="/">tip calculator</a>.</p>
 
     <section class="tool" aria-labelledby="tool-heading">
@@ -97,6 +97,20 @@
         <div class="field">
           <label for="charge">Service charge or auto-gratuity</label>
           <input id="charge" type="text" inputmode="decimal" placeholder="18" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="line-wording">What does the line say?</label>
+          <select id="line-wording">
+            <option value="">Choose a wording</option>
+            <option value="auto">Gratuity included / auto-gratuity 18% for a large party</option>
+            <option value="suggested">Suggested tip 15% / 18% / 20%, with a blank line</option>
+            <option value="service">Service charge, compulsory</option>
+            <option value="fee">Surcharge, kitchen, or wellness fee</option>
+            <option value="france">Prix service compris</option>
+            <option value="uk">Discretionary or optional service charge</option>
+            <option value="japan">No tip line; you are in Japan</option>
+          </select>
+          <p id="line-note" class="hint"></p>
         </div>
         <label class="check" for="required">
           <input type="checkbox" id="required" checked>
@@ -125,6 +139,25 @@
     </section>
 
     <article class="content">
+      <h2>How can you tell if gratuity is included?</h2>
+      <p>Read the check for a separate line that is already added into the total. The menu or the check will say whether you can remove it. A list of percentages next to a blank tip line is a suggestion. <a href="https://www.irs.gov/publications/p531">Publication 531</a> Example 2 treats whatever you write on that blank line as a tip.</p>
+      <h2>What do common bill lines mean?</h2>
+      <div class="table-scroll">
+        <table class="rate-table">
+          <caption>Bill wording, and whether the cited rule treats the line as a tip</caption>
+          <thead><tr><th>Line as printed</th><th>What it is</th><th>A tip?</th><th>What to do</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Gratuity included, or auto-gratuity 18% for a party of 6 or more</td><td>A mandatory service charge</td><td>No</td><td>An extra amount is optional</td><td><a href="https://www.irs.gov/pub/irs-drop/rr-12-18.pdf">IRS Revenue Ruling 2012-18</a>, Example A; <a href="https://www.irs.gov/businesses/small-businesses-self-employed/tip-recordkeeping-and-reporting">IRS tip page</a></td></tr>
+            <tr><td>Suggested tip 15% / 18% / 20%, blank tip line</td><td>A suggestion</td><td>Whatever you write</td><td>Write any amount, or nothing</td><td>IRS tip page and Publication 531 Example 2</td></tr>
+            <tr><td>Service charge, a compulsory percent</td><td>A compulsory charge for service</td><td>No, under the FLSA</td><td>Ask what the charge covers before adding another full tip</td><td><a href="https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa">DOL Fact Sheet #15</a></td></tr>
+            <tr><td>Surcharge, kitchen, wellness, or employer-mandate fee</td><td>A mandatory fee, not a tip</td><td>No</td><td>In California, restaurant mandatory fees must be clearly and conspicuously displayed wherever prices are shown</td><td><a href="https://oag.ca.gov/hiddenfees">California Attorney General, SB 478</a></td></tr>
+            <tr><td>Prix service compris</td><td>Service is a required percentage already in the displayed price. A pourboire is optional</td><td>The pourboire only</td><td>No profession can demand a tip</td><td><a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Pourboire">DGCCRF, Pourboire</a></td></tr>
+            <tr><td>Discretionary or optional service charge</td><td>An optional add-on in Britain</td><td>Only if you pay it</td><td>VisitBritain says you can choose whether to pay</td><td><a href="https://www.visitbritain.com/en/plan-your-trip/useful-information">VisitBritain</a></td></tr>
+            <tr><td>No tip line in Japan</td><td>Tipping is not common at restaurants, cafes, bars, taxis, or hotels</td><td>No</td><td>See the <a href="/guides/tipping-in-japan/">Japan guide</a></td><td><a href="https://www.japan.travel/en/plan/tipping-in-japan/">JNTO</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Coperto and servizio incluso are on the <a href="/guides/tipping-in-italy/">Italy guide</a>, from Italia.it and the Italian education ministry, not in this table as a U.S. tax rule.</p>
       <h2>A required line is not a tip</h2>
       <p>The IRS page <a href="https://www.irs.gov/businesses/small-businesses-self-employed/tip-recordkeeping-and-reporting">Tip recordkeeping and reporting</a> says service charges added to a bill by the employer and distributed to an employee are not tips. The employer treats them as wages and includes them on Form W-2. The same page says a payment is a tip only if the customer voluntarily decides to pay it and determines the amount. Its examples of service charges include an automatic charge added to a bill, such as a mandatory 18% charge for large parties. If the restaurant adds that 18% and the customer voluntarily adds something more, only the additional voluntary amount is a tip.</p>
       <p><a href="https://www.irs.gov/publications/p531">Publication 531</a> says the same thing from the worker's side. Do not write a service charge in a tip diary when the employer adds it to the bill, pays it to you, and treats it as wages. Example 1 is an 18% charge for parties of six or more. The guest's bill includes that 18% on the tip line and in the total. Because the guest did not have an unrestricted right to determine the amount, the 18% is a service charge. It is wages, not a tip. Example 2 is the opposite: sample calculations of 15%, 18%, and 20% under a blank tip line. Because the guest can enter any amount or leave it blank, whatever they add is a tip.</p>

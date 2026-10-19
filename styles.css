@@ -397,3 +397,12 @@ select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3p
 .norm-alert .norm-sources { margin-top: 8px; font-size: .92rem; }
 #home-block h3 { margin: 14px 0 6px; font-size: 1.05rem; }
 #copy-btn { margin-top: 8px; }
+.person-row, .item-row, .item-person, .role-row, .pool-row {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 8px;
+}
+.person-row input, .item-row input, .item-person input[type="text"], .role-row input, .pool-row input { min-width: 0; }
+.person-row .pname, .item-person .iname, .role-row .rname, .pool-row .pname { flex: 1 1 8rem; }
+.who-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.split-lines { margin: 0 0 12px; padding-left: 1.1rem; }
+.mode-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.wage-note { font-size: .92rem; }

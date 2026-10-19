@@ -63,9 +63,10 @@
       label: "Not customary",
       percent: 0,
       setsTip: true,
-      text: "A tip is not customary here, and offering one can cause discomfort. The Japan National Tourism Organization says tipping is not common for restaurants, cafes, bars, taxis, or hotels, and that a service charge is often already on a restaurant bill. A discreet envelope for a private guide or interpreter who is used to overseas clients is a narrow exception, not a restaurant tip. Tokyo, Osaka, and Kyoto are set to 0%. You can change the percent if you still want to leave something.",
+      text: "Tipping is not common. The Japan National Tourism Organization says it is not common to tip at bars, cafes, restaurants, taxis, or hotels. A gratuity called kokorozuke, from the heart, may be accepted by a private guide or interpreter used to overseas practice. It is not expected, and it should be discreet, in an envelope sold at convenience stores, stationery stores, or 100-yen stores. Tokyo's official visitor guide says a restaurant tip will almost certainly be refused, and that there is no need to tip a taxi driver. Tokyo, Osaka, and Kyoto are set to 0%. You can change the percent if you still want to leave something.",
       sources: [
-        { name: "Japan National Tourism Organization, tipping in Japan", url: "https://www.japan.travel/en/plan/tipping-in-japan/" }
+        { name: "Japan National Tourism Organization, tipping in Japan", url: "https://www.japan.travel/en/plan/tipping-in-japan/" },
+        { name: "Go Tokyo, How to Enjoy Tokyo (PDF)", url: "https://www.gotokyo.org/book/wp-content/uploads/2025/09/2509_HowtoEnjoyTokyo_EN_low.pdf" }
       ]
     },
     AU: {
