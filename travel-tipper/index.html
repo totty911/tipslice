@@ -13,7 +13,7 @@
   <meta property="og:title" content="Travel Tipper | TipSlice">
   <meta property="og:description" content="City tax rates and country tipping notes with the sources named, then the bill, tip, split, and home-currency total.">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="/styles.css?v=20261017e">
+  <link rel="stylesheet" href="/styles.css?v=20261019a">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5833914188606567" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"TipSlice Travel Tipper","url":"https://tipslice.com/travel-tipper/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -49,14 +49,34 @@
 </head>
 <body>
   <a class="skip-link" href="#city">Skip to Travel Tipper</a>
-  <header class="site-header">
+    <header class="site-header">
     <div class="wrap header-inner">
       <span class="brand" aria-label="TipSlice">
-        <a href="/">
-          <img src="/favicon.svg" alt="" width="28" height="28">
-          <span>Tip<strong>Slice</strong></span>
-        </a>
+        <a href="/"><img src="/favicon.svg" alt="" width="28" height="28"><span>Tip<strong>Slice</strong></span></a>
       </span>
+    <details class="menu-details">
+      <summary class="nav-toggle" aria-controls="site-menu">
+        <span class="nav-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="visually-hidden">Menu</span>
+      </summary>
+    </details>
+    <nav class="top-nav" id="site-menu" aria-label="Primary">
+      <a href="/">Tip Calculator</a>
+      <a href="/split-bill.html">Split Bill</a>
+      <a href="/travel-tipper/" aria-current="page">Travel Tipper</a>
+      <a href="/currency-converter/">Currency Converter</a>
+      <details class="more-details">
+        <summary>More tools</summary>
+        <div class="more-menu">
+          <a href="/tip-percentage.html">Tip %</a>
+          <a href="/sales-tax-calculator.html">Sales Tax</a>
+          <a href="/tip-out-calculator/">Tip-out</a>
+          <a href="/hourly-wage-with-tips/">Hourly Wage + Tips</a>
+          <a href="/gratuity-included-checker/">Gratuity Checker</a>
+        </div>
+      </details>
+      <a href="/guides/">Guides</a>
+    </nav>
     </div>
   </header>
   <main class="wrap" id="main">
@@ -212,5 +232,6 @@
   <script src="/travel-tipper/places.js?v=20261017c"></script>
   <script src="/currency-converter/currency.js?v=20261017c" defer></script>
   <script src="/travel-tipper/travel-tipper.js?v=20261017c" defer></script>
+  <script src="/nav.js" defer></script>
 </body>
 </html>
