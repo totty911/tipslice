@@ -22,9 +22,13 @@
       label: "Expected",
       percent: 15,
       setsTip: true,
-      text: "A tip is expected. The Government of Canada says the standard tip is usually 15% of the bill, and that tipping for good service is common in restaurants, bars, taxis, and hotels. Toronto, Vancouver, Montreal, and Calgary all use that country figure. This list does not invent a separate percent for each city.",
+      text: "A tip is expected. The Government of Canada says the standard tip is usually 15% of the bill, often for good service in restaurants, bars, taxis, and hotels. Destination Ontario says 15% to 20% is customary at bars and restaurants. Travel Alberta says about 15% to 20% of the pre-tax bill. Bonjour Québec says 10% to 15% of the bill before taxes in restaurants, bars, and taxis. The field starts at 15%, the Canada.ca figure, and does not average those ranges. The CRA says the percentage, and whether it is calculated before or after tax, depends on the customer. Toronto, Vancouver, Montreal, and Calgary share that starting field.",
       sources: [
-        { name: "Government of Canada, settling in Canada: money", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/money.html" }
+        { name: "Government of Canada, settling in Canada: money", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/money.html" },
+        { name: "CRA, GST/HST in special cases", url: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-special-cases.html" },
+        { name: "Destination Ontario, about Ontario", url: "https://www.destinationontario.com/en-ca/travel-resources/about-ontario" },
+        { name: "Bonjour Québec, good to know", url: "https://www.bonjourquebec.com/en-us/plan-your-trip/useful-information/good-to-know-before-leave" },
+        { name: "Travel Alberta, know before you go", url: "https://www.travelalberta.com/know-before-you-go" }
       ]
     },
     GB: {

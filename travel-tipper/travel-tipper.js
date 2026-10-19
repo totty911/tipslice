@@ -172,7 +172,8 @@
       GB: ['/guides/tipping-in-the-uk/', 'UK guide'],
       ES: ['/guides/tipping-in-spain/', 'Spain guide'],
       FR: ['/guides/tipping-in-france/', 'France guide'],
-      DE: ['/guides/tipping-in-germany/', 'Germany guide']
+      DE: ['/guides/tipping-in-germany/', 'Germany guide'],
+      CA: ['/guides/tipping-in-canada/', 'Canada guide']
     };
 
     function countryGuideParagraph() {
