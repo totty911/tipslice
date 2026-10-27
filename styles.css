@@ -239,6 +239,7 @@ input[aria-invalid="true"] { border-color: var(--danger); }
 
 /* Buttons: solid teal primary, outlined secondary — never resemble ad units */
 .actions { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
+.actions a.btn { display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; }
 .btn { min-height: 52px; font: inherit; font-weight: 700; font-size: 1.05rem; border-radius: 12px; cursor: pointer; padding: 0 16px; }
 .btn-primary { background: var(--primary); color: var(--primary-ink); border: 2px solid var(--primary); }
 .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
